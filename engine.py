@@ -1,11 +1,10 @@
 import os
 import itertools
-import json
 import requests
 from datetime import datetime
 
 # ==========================================
-# 1. THE EMBEDDED HTML MATCH VISUAL TEMPLATE
+# 1. THE LAYOUT TEMPLATE (CLEAN & DYNAMIC)
 # ==========================================
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -13,7 +12,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="c_K6M_6ZUJTCpaExzxn5HyzwgyupoiwBwC2TUBi5RRg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{PLAYER_A}} vs {{PLAYER_B}} Advanced Stats, Fantasy Form & Debate Matrix</title>
+    <title>{{PLAYER_A}} vs {{PLAYER_B}} Advanced Stats, Role Comparison & Debate Matrix</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans min-h-screen">
@@ -27,12 +26,17 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
     <main class="max-w-4xl mx-auto px-4 py-8">
         <div class="text-center mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-xs font-semibold text-slate-400 mb-4 border border-slate-700">
+                <span>🟢 { {{PLAYER_A_POS}} }</span>
+                <span class="text-slate-600">vs</span>
+                <span>🔵 { {{PLAYER_B_POS}} }</span>
+            </div>
             <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-2">
                 <span class="text-emerald-400">{{PLAYER_A}}</span> 
                 <span class="text-slate-500 text-2xl md:text-3xl font-normal mx-2">vs</span> 
                 <span class="text-cyan-400">{{PLAYER_B}}</span>
             </h1>
-            <p class="text-slate-400 text-sm md:text-base">Data-backed performance metric comparison & FPL decision matrix.</p>
+            <p class="text-slate-400 text-sm md:text-base">Role-weighted metric breakdown optimized for player tactical positions.</p>
         </div>
 
         <!-- FPL Recommendation Matrix -->
@@ -49,47 +53,13 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
         <!-- Performance Bars Matrix -->
         <div class="bg-slate-950 border border-slate-800 rounded-xl p-6 mb-8 shadow-md">
-            <h3 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-6 border-b border-slate-800 pb-2">Key Performance Indicators (Per 90 mins)</h3>
+            <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-3">
+                <h3 class="text-sm font-bold uppercase tracking-widest text-slate-400">Performance Matrix (Per 90 Mins)</h3>
+                <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-bold uppercase tracking-wider">🌟 Role-Critical Metrics Highlighted</span>
+            </div>
             
             <div class="space-y-6">
-                <!-- Stat Item: Goals -->
-                <div>
-                    <div class="flex justify-between text-sm mb-1 font-semibold">
-                        <span class="text-emerald-400">{{PLAYER_A_G}}</span>
-                        <span class="text-slate-400 font-normal uppercase tracking-wider text-xs">Goals</span>
-                        <span class="text-cyan-400">{{PLAYER_B_G}}</span>
-                    </div>
-                    <div class="flex h-3 bg-slate-800 rounded-full overflow-hidden">
-                        <div class="bg-emerald-500" style="width: {{PLAYER_A_G_PCT}}%"></div>
-                        <div class="bg-cyan-500 ml-auto" style="width: {{PLAYER_B_G_PCT}}%"></div>
-                    </div>
-                </div>
-
-                <!-- Stat Item: Assists -->
-                <div>
-                    <div class="flex justify-between text-sm mb-1 font-semibold">
-                        <span class="text-emerald-400">{{PLAYER_A_A}}</span>
-                        <span class="text-slate-400 font-normal uppercase tracking-wider text-xs">Assists</span>
-                        <span class="text-cyan-400">{{PLAYER_B_A}}</span>
-                    </div>
-                    <div class="flex h-3 bg-slate-800 rounded-full overflow-hidden">
-                        <div class="bg-emerald-500" style="width: {{PLAYER_A_A_PCT}}%"></div>
-                        <div class="bg-cyan-500 ml-auto" style="width: {{PLAYER_B_A_PCT}}%"></div>
-                    </div>
-                </div>
-
-                <!-- Stat Item: Expected Goals (xG) -->
-                <div>
-                    <div class="flex justify-between text-sm mb-1 font-semibold">
-                        <span class="text-emerald-400">{{PLAYER_A_XG}}</span>
-                        <span class="text-slate-400 font-normal uppercase tracking-wider text-xs">Expected Goals (xG)</span>
-                        <span class="text-cyan-400">{{PLAYER_B_XG}}</span>
-                    </div>
-                    <div class="flex h-3 bg-slate-800 rounded-full overflow-hidden">
-                        <div class="bg-emerald-500" style="width: {{PLAYER_A_XG_PCT}}%"></div>
-                        <div class="bg-cyan-500 ml-auto" style="width: {{PLAYER_B_XG_PCT}}%"></div>
-                    </div>
-                </div>
+                {{STAT_ROWS}}
             </div>
         </div>
 
@@ -103,8 +73,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 """
 
 # ==========================================
-# 2. THE LIVE API INGESTION ENGINE
+# 2. POSITION-AWARE DATA INGESTION
 # ==========================================
+POSITION_MAP = {2: "Defender", 3: "Midfielder", 4: "Forward"}
+
 def fetch_live_fpl_pool():
     print("Connecting to live Premier League data registries...")
     url = "https://fantasy.premierleague.com/api/bootstrap-static/"
@@ -119,40 +91,72 @@ def fetch_live_fpl_pool():
     all_players = data.get("elements", [])
     processed_players = []
     
+    # NOW INCLUDING DEFENDERS (2), MIDFIELDERS (3), AND FORWARDS (4)
     for p in all_players:
         minutes = p.get("minutes", 0)
-        if p.get("element_type") in [3, 4] and minutes > 500:
+        pos_id = p.get("element_type")
+        
+        if pos_id in [2, 3, 4] and minutes > 600:
             match_segments = minutes / 90.0
             
-            goals_per_90 = round(p.get("goals_scored", 0) / match_segments, 2)
-            assists_per_90 = round(p.get("assists", 0) / match_segments, 2)
-            
-            try:
-                xg_total = float(p.get("expected_goals", 0))
-                xg_per_90 = round(xg_total / match_segments, 2)
-            except (ValueError, TypeError):
-                xg_per_90 = 0.0
+            # Helper to calculate clean per-90 metrics safely
+            def per_90(field):
+                try:
+                    return round(float(p.get(field, 0)) / match_segments, 2)
+                except (ValueError, TypeError):
+                    return 0.0
 
             processed_players.append({
                 "name": p.get("web_name"),
-                "goals": goals_per_90,
-                "assists": assists_per_90,
-                "xg": xg_per_90,
+                "position_id": pos_id,
+                "position_name": POSITION_MAP[pos_id],
+                "goals": per_90("goals_scored"),
+                "assists": per_90("assists"),
+                "xg": per_90("expected_goals"),
+                "xa": per_90("expected_assists"),
+                "clean_sheets": per_90("clean_sheets"),
+                "influence": per_90("influence"),
                 "total_points": p.get("total_points", 0)
             })
 
-    return sorted(processed_players, key=lambda x: x["total_points"], reverse=True)[:25]
+    # Keep top 35 player assets to maintain an expansive internal routing mesh
+    return sorted(processed_players, key=lambda x: x["total_points"], reverse=True)[:35]
 
 
 # ==========================================
-# 3. MATRIX COMPILER & GENERATOR LOGIC
+# 3. STAT ROW GENERATION LOGIC WITH VISUAL INJECTION
 # ==========================================
+def build_metric_row(label, val_a, val_b, is_critical):
+    total = (val_a + val_b) or 1.0
+    pct_a = (val_a / total) * 100
+    pct_b = (val_b / total) * 100
+
+    # If the stat is critical for this matchup, add a subtle border-left highlight accent
+    row_border = "border-l-4 border-emerald-500/50 pl-2" if is_critical else "pl-3"
+    label_style = "text-emerald-400 font-bold uppercase tracking-wider text-xs" if is_critical else "text-slate-400 font-normal uppercase tracking-wider text-xs"
+
+    return f"""
+    <div class="{row_border}">
+        <div class="flex justify-between text-sm mb-1 font-semibold">
+            <span class="text-emerald-400">{val_a:.2f}</span>
+            <span class="{label_style}">{label}</span>
+            <span class="text-cyan-400">{val_b:.2f}</span>
+        </div>
+        <div class="flex h-3 bg-slate-800 rounded-full overflow-hidden">
+            <div class="bg-emerald-500" style="width: {pct_a:.1f}%"></div>
+            <div class="bg-cyan-500 ml-auto" style="width: {pct_b:.1f}%"></div>
+        </div>
+    </div>"""
+
 def clean_url_slug(name):
     return name.lower().replace(" ", "-").replace(".", "").replace("'", "")
 
+
+# ==========================================
+# 4. MASTER COMPRESSION PIPELINE
+# ==========================================
 def execute_matrix_pipeline():
     os.makedirs('public/vs', exist_ok=True)
-    
     players_pool = fetch_live_fpl_pool()
     if not players_pool:
         print("Data ingestion empty. Execution pipeline suspended.")
@@ -167,33 +171,36 @@ def execute_matrix_pipeline():
         filename = f"{slug_a}-vs-{slug_b}.html"
         filepath = os.path.join('public/vs', filename)
         
-        total_g = (player_a['goals'] + player_b['goals']) or 1.0
-        total_a = (player_a['assists'] + player_b['assists']) or 1.0
-        total_xg = (player_a['xg'] + player_b['xg']) or 1.0
-        
-        if player_a['goals'] > player_b['goals'] and player_a['xg'] > player_b['xg']:
-            verdict = f"<strong>{player_a['name']}</strong> is currently outperforming in structural goal conversion and taking higher quality shooting opportunities."
-        elif player_b['goals'] > player_a['goals'] and player_b['xg'] > player_a['xg']:
-            verdict = f"<strong>{player_b['name']}</strong> claims the analytical edge here, showing superior clinical output per 90 minutes."
+        # Build out dynamic, position-aware metric rows
+        stat_rows_html = ""
+        metrics_config = [
+            {"key": "goals", "label": "Goals", "critical_roles": [4]},
+            {"key": "xg", "label": "Expected Goals (xG)", "critical_roles": [4]},
+            {"key": "assists", "label": "Assists", "critical_roles": [3]},
+            {"key": "xa", "label": "Expected Assists (xA)", "critical_roles": [3]},
+            {"key": "clean_sheets", "label": "Clean Sheets", "critical_roles": [2]},
+            {"key": "influence", "label": "FPL Influence Index", "critical_roles": [2, 3]}
+        ]
+
+        for metric in metrics_config:
+            # Highlight metric if it's crucial to EITHER player's actual position
+            is_critical = (player_a['position_id'] in metric["critical_roles"]) or (player_b['position_id'] in metric["critical_roles"])
+            stat_rows_html += build_metric_row(metric["label"], player_a[metric["key"]], player_b[metric["key"]], is_critical)
+
+        # Basic text layout helper for contextual clarity
+        verdict = f"Comparing <strong>{player_a['name']}</strong> ({player_a['position_name']}) and <strong>{player_b['name']}</strong> ({player_b['position_name']}). "
+        if player_a['total_points'] > player_b['total_points']:
+            verdict += f"Tactically, {player_a['name']} holds the seasonal form advantage in the selection pool."
         else:
-            verdict = f"A highly balanced data matchup. <strong>{player_a['name']}</strong> provides different operational performance attributes compared to <strong>{player_b['name']}</strong>."
+            verdict += f"Tactically, {player_b['name']} maintains a higher overall efficiency index this season."
 
         replacements = {
             '{{PLAYER_A}}': player_a['name'],
             '{{PLAYER_B}}': player_b['name'],
+            '{{PLAYER_A_POS}}': player_a['position_name'],
+            '{{PLAYER_B_POS}}': player_b['position_name'],
             '{{VERDICT_TEXT}}': verdict,
-            '{{PLAYER_A_G}}': f"{player_a['goals']:.2f}",
-            '{{PLAYER_B_G}}': f"{player_b['goals']:.2f}",
-            '{{PLAYER_A_G_PCT}}': f"{(player_a['goals'] / total_g) * 100:.1f}",
-            '{{PLAYER_B_G_PCT}}': f"{(player_b['goals'] / total_g) * 100:.1f}",
-            '{{PLAYER_A_A}}': f"{player_a['assists']:.2f}",
-            '{{PLAYER_B_A}}': f"{player_b['assists']:.2f}",
-            '{{PLAYER_A_A_PCT}}': f"{(player_a['assists'] / total_a) * 100:.1f}",
-            '{{PLAYER_B_A_PCT}}': f"{(player_b['assists'] / total_a) * 100:.1f}",
-            '{{PLAYER_A_XG}}': f"{player_a['xg']:.2f}",
-            '{{PLAYER_B_XG}}': f"{player_b['xg']:.2f}",
-            '{{PLAYER_A_XG_PCT}}': f"{(player_a['xg'] / total_xg) * 100:.1f}",
-            '{{PLAYER_B_XG_PCT}}': f"{(player_b['xg'] / total_xg) * 100:.1f}",
+            '{{STAT_ROWS}}': stat_rows_html,
             '{{TIMESTAMP}}': timestamp
         }
         
@@ -205,7 +212,7 @@ def execute_matrix_pipeline():
             f.write(compiled_page)
             
         generated_links.append({
-            'anchor_text': f"{player_a['name']} vs {player_b['name']}",
+            'anchor_text': f"{player_a['name']} ({player_a['position_name']}) vs {player_b['name']} ({player_b['position_name']})",
             'url': f"vs/{filename}"
         })
 
@@ -223,7 +230,7 @@ def build_central_index(links, timestamp):
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; max-width: 900px; margin: 40px auto; padding: 0 20px; }}
         h1 {{ color: #34d399; text-align: center; font-size: 2.5rem; font-weight: 900; letter-spacing: -0.025em; }}
-        .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 40px; }}
+        .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 40px; }}
         .card {{ background: #1e293b; padding: 14px; border-radius: 10px; text-align: center; border: 1px solid #334155; text-decoration: none; color: #f8fafc; font-weight: 500; transition: all 0.2s; }}
         .card:hover {{ border-color: #34d399; background: #1e293b; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(52, 211, 153, 0.1); }}
         .footer {{ text-align: center; font-size: 0.8rem; color: #64748b; margin-top: 60px; border-top: 1px solid #334155; padding-top: 20px; }}
@@ -246,42 +253,31 @@ def build_central_index(links, timestamp):
         f.write(index_html)
     print(f"Successfully generated main landing directory with {len(links)} long-tail nodes.")
 
-
-# ==========================================
-# 4. SITEMAP GENERATOR ENGINE
-# ==========================================
 def generate_sitemap(links, base_url):
     print("🤖 Starting automated sitemap generation...")
     today = datetime.now().strftime("%Y-%m-%d")
-    
-    xml_content = []
-    xml_content.append('<?xml version="1.0" encoding="UTF-8"?>')
-    xml_content.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
-    
-    xml_content.append('  <url>')
-    xml_content.append(f'    <loc>{base_url}/</loc>')
-    xml_content.append(f'    <lastmod>{today}</lastmod>')
-    xml_content.append('    <changefreq>daily</changefreq>')
-    xml_content.append('    <priority>1.0</priority>')
-    xml_content.append('  </url>')
-    
+    xml_content = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        '  <url>',
+        f'    <loc>{base_url}/</loc>',
+        f'    <lastmod>{today}</lastmod>',
+        '    <changefreq>daily</changefreq>',
+        '    <priority>1.0</priority>',
+        '  </url>'
+    ]
     for link in links:
-        url_path = link["url"]
         xml_content.append('  <url>')
-        xml_content.append(f'    <loc>{base_url}/{url_path}</loc>')
+        xml_content.append(f'    <loc>{base_url}/{link["url"]}</loc>')
         xml_content.append(f'    <lastmod>{today}</lastmod>')
         xml_content.append('    <changefreq>weekly</changefreq>')
         xml_content.append('    <priority>0.8</priority>')
         xml_content.append('  </url>')
-        
-    xml_content.append('<urlset>')
+    xml_content.append('</urlset>')
     
-    sitemap_path = os.path.join("public", "sitemap.xml")
-    with open(sitemap_path, "w", encoding="utf-8") as f:
+    with open(os.path.join("public", "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write("\n".join(xml_content))
-        
     print(f"✅ sitemap.xml successfully created with {len(links) + 1} indexed assets!")
-
 
 if __name__ == "__main__":
     execute_matrix_pipeline()
