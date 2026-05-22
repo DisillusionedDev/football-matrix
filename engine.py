@@ -14,6 +14,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{PLAYER_A}} vs {{PLAYER_B}} Advanced Stats, Fantasy Form & Debate Matrix</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="google-site-verification" content="c_K6M_6ZUJTCpaExzxn5HyzwgyupoiwBwC2TUBi5RRg" />
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans min-h-screen">
 
