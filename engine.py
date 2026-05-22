@@ -11,10 +11,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="google-site-verification" content="c_K6M_6ZUJTCpaExzxn5HyzwgyupoiwBwC2TUBi5RRg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{PLAYER_A}} vs {{PLAYER_B}} Advanced Stats, Fantasy Form & Debate Matrix</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <meta name="google-site-verification" content="c_K6M_6ZUJTCpaExzxn5HyzwgyupoiwBwC2TUBi5RRg" />
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans min-h-screen">
 
@@ -217,6 +217,10 @@ def execute_matrix_pipeline():
 
     # Compile the central directory discovery landing page (public/index.html)
     build_central_index(generated_links, timestamp)
+    
+    # NEW: Automatically build the search engine sitemap for Google mapping
+    # Note: Replace the URL base if your Cloudflare Pages site uses a custom domain
+    generate_sitemap(generated_links, base_url="https://football-matrix.pages.dev")
 
 def build_central_index(links, timestamp):
     index_html = f"""<!DOCTYPE html>
@@ -250,6 +254,45 @@ def build_central_index(links, timestamp):
     with open('public/index.html', 'w', encoding='utf-8') as f:
         f.write(index_html)
     print(f"Successfully generated main landing directory with {len(links)} long-tail nodes.")
+
+
+# ==========================================
+# 4. SITEMAP GENERATOR ENGINE (NEW ADDITION)
+# ==========================================
+def generate_sitemap(links, base_url):
+    print("🤖 Starting automated sitemap generation...")
+    today = datetime.now().strftime("%Y-%m-%d")
+    
+    xml_content = []
+    xml_content.append('<?xml version="1.0" encoding="UTF-8"?>')
+    xml_content.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+    
+    # Add root landing catalog page
+    xml_content.append('  <url>')
+    xml_content.append(f'    <loc>{base_url}/</loc>')
+    xml_content.append(f'    <lastmod>{today}</lastmod>')
+    xml_content.append('    <changefreq>daily</changefreq>')
+    xml_content.append('    <priority>1.0</priority>')
+    xml_content.append('  </url>')
+    
+    # Dynamically inject every generated pairing node route
+    for link in links:
+        url_path = link["url"]  # Extracts 'vs/player-a-vs-player-b.html'
+        xml_content.append('  <url>')
+        xml_content.append(f'    <loc>{base_url}/{url_path}</loc>')
+        xml_content.append(f'    <lastmod>{today}</lastmod>')
+        xml_content.append('    <changefreq>weekly</changefreq>')
+        xml_content.append('    <priority>0.8</priority>')
+        xml_content.append('  </url>')
+        
+    xml_content.append('</urlset>')
+    
+    sitemap_path = os.path.join("public", "sitemap.xml")
+    with open(sitemap_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(xml_content))
+        
+    print(f"✅ sitemap.xml successfully created with {len(links) + 1} indexed assets!")
+
 
 if __name__ == "__main__":
     execute_matrix_pipeline()
