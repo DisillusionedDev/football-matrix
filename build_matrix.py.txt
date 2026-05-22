@@ -1,0 +1,127 @@
+import os
+import itertools
+import json
+from datetime import datetime
+
+def load_players_pool():
+    if not os.path.exists("players_pool.json"):
+        print("Warning: players_pool.json not found! Creating hardcoded fallback profiles.")
+        return [
+            {"name": "Haaland", "goals": 0.95, "assists": 0.15, "xg": 0.88, "total_points": 200},
+            {"name": "Salah", "goals": 0.65, "assists": 0.42, "xg": 0.61, "total_points": 195},
+            {"name": "Saka", "goals": 0.45, "assists": 0.50, "xg": 0.48, "total_points": 180},
+            {"name": "Son", "goals": 0.40, "assists": 0.35, "xg": 0.38, "total_points": 160}
+        ]
+    with open("players_pool.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def clean_slug(name):
+    return name.lower().replace(" ", "-").replace(".", "").replace("'", "")
+
+def generate_engine():
+    # Setup directory map boundaries
+    os.makedirs('public/vs', exist_ok=True)
+    
+    PLAYERS_POOL = load_players_pool()
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Read the master template
+    template_path = 'templates/comparison_template.html'
+    if not os.path.exists(template_path):
+        print(f"Error: Master template missing at {template_path}. Aborting compilation.")
+        return
+        
+    with open(template_path, 'r', encoding='utf-8') as f:
+        template_content = f.read()
+
+    generated_links = []
+
+    # Generate matrix combinations pairs
+    for player_a, player_b in itertools.combinations(PLAYERS_POOL, 2):
+        slug_a = clean_slug(player_a['name'])
+        slug_b = clean_slug(player_b['name'])
+        filename = f"{slug_a}-vs-{slug_b}.html"
+        filepath = os.path.join('public/vs', filename)
+        
+        # Calculate algorithmic distribution weights for progress bars
+        total_g = (player_a['goals'] + player_b['goals']) or 1.0
+        total_a = (player_a['assists'] + player_b['assists']) or 1.0
+        total_xg = (player_a['xg'] + player_b['xg']) or 1.0
+        
+        # Calculate dynamic text verdict logic
+        if player_a['goals'] > player_b['goals'] and player_a['xg'] > player_b['xg']:
+            verdict = f"{player_a['name']} dominates the attacking metrics with superior goal conversion and higher quality positioning."
+        elif player_b['goals'] > player_a['goals'] and player_b['xg'] > player_a['xg']:
+            verdict = f"{player_b['name']} takes the advantage here, outperforming in raw clinical output and threat level."
+        else:
+            verdict = f"An extremely tight structural match. {player_a['name']} provides different tactical strengths compared to {player_b['name']}."
+
+        # Map programmatic dictionary values directly to layout strings
+        replacements = {
+            '{{PLAYER_A}}': player_a['name'],
+            '{{PLAYER_B}}': player_b['name'],
+            '{{VERDICT_TEXT}}': verdict,
+            '{{PLAYER_A_G}}': f"{player_a['goals']:.2f}",
+            '{{PLAYER_B_G}}': f"{player_b['goals']:.2f}",
+            '{{PLAYER_A_G_PCT}}': f"{(player_a['goals'] / total_g) * 100:.1f}",
+            '{{PLAYER_B_G_PCT}}': f"{(player_b['goals'] / total_g) * 100:.1f}",
+            '{{PLAYER_A_A}}': f"{player_a['assists']:.2f}",
+            '{{PLAYER_B_A}}': f"{player_b['assists']:.2f}",
+            '{{PLAYER_A_A_PCT}}': f"{(player_a['assists'] / total_a) * 100:.1f}",
+            '{{PLAYER_B_A_PCT}}': f"{(player_b['assists'] / total_a) * 100:.1f}",
+            '{{PLAYER_A_XG}}': f"{player_a['xg']:.2f}",
+            '{{PLAYER_B_XG}}': f"{player_b['xg']:.2f}",
+            '{{PLAYER_A_XG_PCT}}': f"{(player_a['xg'] / total_xg) * 100:.1f}",
+            '{{PLAYER_B_XG_PCT}}': f"{(player_b['xg'] / total_xg) * 100:.1f}",
+            '{{TIMESTAMP}}': timestamp
+        }
+        
+        page_content = template_content
+        for placeholder, value in replacements.items():
+            page_content = page_content.replace(placeholder, value)
+            
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(page_content)
+            
+        generated_links.append({
+            'anchor_text': f"{player_a['name']} vs {player_b['name']}",
+            'url': f"vs/{filename}"
+        })
+
+    # Compile the central directory landing page (index.html)
+    index_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Football Head-to-Head Engine</title>
+    <style>
+        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; max-width: 800px; margin: 40px auto; padding: 0 20px; }}
+        h1 {{ color: #38bdf8; text-align: center; }}
+        .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-top: 30px; }}
+        .card {{ background: #1e293b; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #334155; text-decoration: none; color: #f8fafc; transition: all 0.2s; }}
+        .card:hover {{ border-color: #38bdf8; background: #1e293b; transform: translateY(-2px); }}
+        .footer {{ text-align: center; font-size: 0.8rem; color: #64748b; margin-top: 50px; }}
+    </style>
+</head>
+<body>
+    <h1>Statistical Comparison Matrix</h1>
+    <p style="text-align:center; color:#94a3b8;">Select a dynamic structural breakdown below to compare live performance indexes.</p>
+    <div class="grid">
+    """
+    
+    for link in generated_links:
+        index_html += f'    <a class="card" href="{link["url"]}">{link["anchor_text"]}</a>\n'
+        
+    index_html += f"""    </div>
+    <div class="footer">Engine compiled automatically on {timestamp} via FPL Live Pipeline Data</div>
+</body>
+</html>"""
+
+    with open('public/index.html', 'w', encoding='utf-8') as f:
+        f.write(index_html)
+
+    print(f"Compilation pipeline complete. Generated {len(generated_links)} tactical matrix entries.")
+
+if __name__ == "__main__":
+    generate_engine()

@@ -1,0 +1,53 @@
+import requests
+import json
+
+def fetch_live_data():
+    print("Connecting to live Premier League data registries...")
+    url = "https://fantasy.premierleague.com/api/bootstrap-static/"
+    
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+    except Exception as e:
+        print(f"Error fetching data from API: {e}")
+        return
+
+    all_players = data.get("elements", [])
+    processed_players = []
+    
+    # 3 = Midfielder, 4 = Forward
+    for p in all_players:
+        minutes = p.get("minutes", 0)
+        
+        # Only grab active core rotation players with substantial game time
+        if p.get("element_type") in [3, 4] and minutes > 500:
+            match_segments = minutes / 90.0
+            
+            goals_per_90 = round(p.get("goals_scored", 0) / match_segments, 2)
+            assists_per_90 = round(p.get("assists", 0) / match_segments, 2)
+            
+            try:
+                xg_total = float(p.get("expected_goals", 0))
+                xg_per_90 = round(xg_total / match_segments, 2)
+            except (ValueError, TypeError):
+                xg_per_90 = 0.0
+
+            processed_players.append({
+                "name": p.get("web_name"),
+                "goals": goals_per_90,
+                "assists": assists_per_90,
+                "xg": xg_per_90,
+                "total_points": p.get("total_points", 0)
+            })
+
+    # Sort by overall performance points and isolate the top 25 elite players
+    processed_players = sorted(processed_players, key=lambda x: x["total_points"], reverse=True)[:25]
+
+    with open("players_pool.json", "w", encoding="utf-8") as f:
+        json.dump(processed_players, f, indent=4, ensure_ascii=False)
+        
+    print(f"Successfully harvested and compiled data profiles for {len(processed_players)} players.")
+
+if __name__ == "__main__":
+    fetch_live_data()
