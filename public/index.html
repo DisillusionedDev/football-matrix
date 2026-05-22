@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEBATE.FC | Head-to-Head Player Analytics Engine</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        h1 { color: #34d399; text-align: center; font-size: 2.5rem; font-weight: 900; letter-spacing: -0.025em; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 40px; }
+        .card { background: #1e293b; padding: 14px; border-radius: 10px; text-align: center; border: 1px solid #334155; text-decoration: none; color: #f8fafc; font-weight: 500; transition: all 0.2s; }
+        .card:hover { border-color: #34d399; background: #1e293b; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(52, 211, 153, 0.1); }
+        .footer { text-align: center; font-size: 0.8rem; color: #64748b; margin-top: 60px; border-top: 1px solid #334155; padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>📊 DEBATE.FC DATA CORE</h1>
+    <p style="text-align:center; color:#94a3b8;">Select a long-tail search matrix connection node below to inspect performance indicators.</p>
+    <div class="grid">
+            <a class="card" href="vs/haaland-vs-bfernandes.html">Haaland vs B.Fernandes</a>
+        <a class="card" href="vs/haaland-vs-semenyo.html">Haaland vs Semenyo</a>
+        <a class="card" href="vs/haaland-vs-rice.html">Haaland vs Rice</a>
+        <a class="card" href="vs/haaland-vs-thiago.html">Haaland vs Thiago</a>
+        <a class="card" href="vs/haaland-vs-gibbs-white.html">Haaland vs Gibbs-White</a>
+        <a class="card" href="vs/haaland-vs-anderson.html">Haaland vs Anderson</a>
+        <a class="card" href="vs/haaland-vs-joão-pedro.html">Haaland vs João Pedro</a>
+        <a class="card" href="vs/haaland-vs-bowen.html">Haaland vs Bowen</a>
+        <a class="card" href="vs/haaland-vs-rogers.html">Haaland vs Rogers</a>
+        <a class="card" href="vs/haaland-vs-casemiro.html">Haaland vs Casemiro</a>
+        <a class="card" href="vs/haaland-vs-wilson.html">Haaland vs Wilson</a>
+        <a class="card" href="vs/haaland-vs-szoboszlai.html">Haaland vs Szoboszlai</a>
+        <a class="card" href="vs/haaland-vs-saka.html">Haaland vs Saka</a>
+        <a class="card" href="vs/haaland-vs-enzo.html">Haaland vs Enzo</a>
+        <a class="card" href="vs/haaland-vs-garner.html">Haaland vs Garner</a>
+        <a class="card" href="vs/haaland-vs-watkins.html">Haaland vs Watkins</a>
+        <a class="card" href="vs/haaland-vs-bruno-g.html">Haaland vs Bruno G.</a>
+        <a class="card" href="vs/haaland-vs-dewsbury-hall.html">Haaland vs Dewsbury-Hall</a>
+        <a class="card" href="vs/haaland-vs-cunha.html">Haaland vs Cunha</a>
+        <a class="card" href="vs/haaland-vs-gravenberch.html">Haaland vs Gravenberch</a>
+        <a class="card" href="vs/haaland-vs-ele-fée.html">Haaland vs E.Le Fée</a>
+        <a class="card" href="vs/haaland-vs-calvert-lewin.html">Haaland vs Calvert-Lewin</a>
+        <a class="card" href="vs/haaland-vs-mbeumo.html">Haaland vs Mbeumo</a>
+        <a class="card" href="vs/haaland-vs-stach.html">Haaland vs Stach</a>
+        <a class="card" href="vs/bfernandes-vs-semenyo.html">B.Fernandes vs Semenyo</a>
+        <a class="card" href="vs/bfernandes-vs-rice.html">B.Fernandes vs Rice</a>
+        <a class="card" href="vs/bfernandes-vs-thiago.html">B.Fernandes vs Thiago</a>
+        <a class="card" href="vs/bfernandes-vs-gibbs-white.html">B.Fernandes vs Gibbs-White</a>
+        <a class="card" href="vs/bfernandes-vs-anderson.html">B.Fernandes vs Anderson</a>
+        <a class="card" href="vs/bfernandes-vs-joão-pedro.html">B.Fernandes vs João Pedro</a>
+        <a class="card" href="vs/bfernandes-vs-bowen.html">B.Fernandes vs Bowen</a>
+        <a class="card" href="vs/bfernandes-vs-rogers.html">B.Fernandes vs Rogers</a>
+        <a class="card" href="vs/bfernandes-vs-casemiro.html">B.Fernandes vs Casemiro</a>
+        <a class="card" href="vs/bfernandes-vs-wilson.html">B.Fernandes vs Wilson</a>
+        <a class="card" href="vs/bfernandes-vs-szoboszlai.html">B.Fernandes vs Szoboszlai</a>
+        <a class="card" href="vs/bfernandes-vs-saka.html">B.Fernandes vs Saka</a>
+        <a class="card" href="vs/bfernandes-vs-enzo.html">B.Fernandes vs Enzo</a>
+        <a class="card" href="vs/bfernandes-vs-garner.html">B.Fernandes vs Garner</a>
+        <a class="card" href="vs/bfernandes-vs-watkins.html">B.Fernandes vs Watkins</a>
+        <a class="card" href="vs/bfernandes-vs-bruno-g.html">B.Fernandes vs Bruno G.</a>
+        <a class="card" href="vs/bfernandes-vs-dewsbury-hall.html">B.Fernandes vs Dewsbury-Hall</a>
+        <a class="card" href="vs/bfernandes-vs-cunha.html">B.Fernandes vs Cunha</a>
+        <a class="card" href="vs/bfernandes-vs-gravenberch.html">B.Fernandes vs Gravenberch</a>
+        <a class="card" href="vs/bfernandes-vs-ele-fée.html">B.Fernandes vs E.Le Fée</a>
+        <a class="card" href="vs/bfernandes-vs-calvert-lewin.html">B.Fernandes vs Calvert-Lewin</a>
+        <a class="card" href="vs/bfernandes-vs-mbeumo.html">B.Fernandes vs Mbeumo</a>
+        <a class="card" href="vs/bfernandes-vs-stach.html">B.Fernandes vs Stach</a>
+        <a class="card" href="vs/semenyo-vs-rice.html">Semenyo vs Rice</a>
+        <a class="card" href="vs/semenyo-vs-thiago.html">Semenyo vs Thiago</a>
+        <a class="card" href="vs/semenyo-vs-gibbs-white.html">Semenyo vs Gibbs-White</a>
+        <a class="card" href="vs/semenyo-vs-anderson.html">Semenyo vs Anderson</a>
+        <a class="card" href="vs/semenyo-vs-joão-pedro.html">Semenyo vs João Pedro</a>
+        <a class="card" href="vs/semenyo-vs-bowen.html">Semenyo vs Bowen</a>
+        <a class="card" href="vs/semenyo-vs-rogers.html">Semenyo vs Rogers</a>
+        <a class="card" href="vs/semenyo-vs-casemiro.html">Semenyo vs Casemiro</a>
+        <a class="card" href="vs/semenyo-vs-wilson.html">Semenyo vs Wilson</a>
+        <a class="card" href="vs/semenyo-vs-szoboszlai.html">Semenyo vs Szoboszlai</a>
+        <a class="card" href="vs/semenyo-vs-saka.html">Semenyo vs Saka</a>
+        <a class="card" href="vs/semenyo-vs-enzo.html">Semenyo vs Enzo</a>
+        <a class="card" href="vs/semenyo-vs-garner.html">Semenyo vs Garner</a>
+        <a class="card" href="vs/semenyo-vs-watkins.html">Semenyo vs Watkins</a>
+        <a class="card" href="vs/semenyo-vs-bruno-g.html">Semenyo vs Bruno G.</a>
+        <a class="card" href="vs/semenyo-vs-dewsbury-hall.html">Semenyo vs Dewsbury-Hall</a>
+        <a class="card" href="vs/semenyo-vs-cunha.html">Semenyo vs Cunha</a>
+        <a class="card" href="vs/semenyo-vs-gravenberch.html">Semenyo vs Gravenberch</a>
+        <a class="card" href="vs/semenyo-vs-ele-fée.html">Semenyo vs E.Le Fée</a>
+        <a class="card" href="vs/semenyo-vs-calvert-lewin.html">Semenyo vs Calvert-Lewin</a>
+        <a class="card" href="vs/semenyo-vs-mbeumo.html">Semenyo vs Mbeumo</a>
+        <a class="card" href="vs/semenyo-vs-stach.html">Semenyo vs Stach</a>
+        <a class="card" href="vs/rice-vs-thiago.html">Rice vs Thiago</a>
+        <a class="card" href="vs/rice-vs-gibbs-white.html">Rice vs Gibbs-White</a>
+        <a class="card" href="vs/rice-vs-anderson.html">Rice vs Anderson</a>
+        <a class="card" href="vs/rice-vs-joão-pedro.html">Rice vs João Pedro</a>
+        <a class="card" href="vs/rice-vs-bowen.html">Rice vs Bowen</a>
+        <a class="card" href="vs/rice-vs-rogers.html">Rice vs Rogers</a>
+        <a class="card" href="vs/rice-vs-casemiro.html">Rice vs Casemiro</a>
+        <a class="card" href="vs/rice-vs-wilson.html">Rice vs Wilson</a>
+        <a class="card" href="vs/rice-vs-szoboszlai.html">Rice vs Szoboszlai</a>
+        <a class="card" href="vs/rice-vs-saka.html">Rice vs Saka</a>
+        <a class="card" href="vs/rice-vs-enzo.html">Rice vs Enzo</a>
+        <a class="card" href="vs/rice-vs-garner.html">Rice vs Garner</a>
+        <a class="card" href="vs/rice-vs-watkins.html">Rice vs Watkins</a>
+        <a class="card" href="vs/rice-vs-bruno-g.html">Rice vs Bruno G.</a>
+        <a class="card" href="vs/rice-vs-dewsbury-hall.html">Rice vs Dewsbury-Hall</a>
+        <a class="card" href="vs/rice-vs-cunha.html">Rice vs Cunha</a>
+        <a class="card" href="vs/rice-vs-gravenberch.html">Rice vs Gravenberch</a>
+        <a class="card" href="vs/rice-vs-ele-fée.html">Rice vs E.Le Fée</a>
+        <a class="card" href="vs/rice-vs-calvert-lewin.html">Rice vs Calvert-Lewin</a>
+        <a class="card" href="vs/rice-vs-mbeumo.html">Rice vs Mbeumo</a>
+        <a class="card" href="vs/rice-vs-stach.html">Rice vs Stach</a>
+        <a class="card" href="vs/thiago-vs-gibbs-white.html">Thiago vs Gibbs-White</a>
+        <a class="card" href="vs/thiago-vs-anderson.html">Thiago vs Anderson</a>
+        <a class="card" href="vs/thiago-vs-joão-pedro.html">Thiago vs João Pedro</a>
+        <a class="card" href="vs/thiago-vs-bowen.html">Thiago vs Bowen</a>
+        <a class="card" href="vs/thiago-vs-rogers.html">Thiago vs Rogers</a>
+        <a class="card" href="vs/thiago-vs-casemiro.html">Thiago vs Casemiro</a>
+        <a class="card" href="vs/thiago-vs-wilson.html">Thiago vs Wilson</a>
+        <a class="card" href="vs/thiago-vs-szoboszlai.html">Thiago vs Szoboszlai</a>
+        <a class="card" href="vs/thiago-vs-saka.html">Thiago vs Saka</a>
+        <a class="card" href="vs/thiago-vs-enzo.html">Thiago vs Enzo</a>
+        <a class="card" href="vs/thiago-vs-garner.html">Thiago vs Garner</a>
+        <a class="card" href="vs/thiago-vs-watkins.html">Thiago vs Watkins</a>
+        <a class="card" href="vs/thiago-vs-bruno-g.html">Thiago vs Bruno G.</a>
+        <a class="card" href="vs/thiago-vs-dewsbury-hall.html">Thiago vs Dewsbury-Hall</a>
+        <a class="card" href="vs/thiago-vs-cunha.html">Thiago vs Cunha</a>
+        <a class="card" href="vs/thiago-vs-gravenberch.html">Thiago vs Gravenberch</a>
+        <a class="card" href="vs/thiago-vs-ele-fée.html">Thiago vs E.Le Fée</a>
+        <a class="card" href="vs/thiago-vs-calvert-lewin.html">Thiago vs Calvert-Lewin</a>
+        <a class="card" href="vs/thiago-vs-mbeumo.html">Thiago vs Mbeumo</a>
+        <a class="card" href="vs/thiago-vs-stach.html">Thiago vs Stach</a>
+        <a class="card" href="vs/gibbs-white-vs-anderson.html">Gibbs-White vs Anderson</a>
+        <a class="card" href="vs/gibbs-white-vs-joão-pedro.html">Gibbs-White vs João Pedro</a>
+        <a class="card" href="vs/gibbs-white-vs-bowen.html">Gibbs-White vs Bowen</a>
+        <a class="card" href="vs/gibbs-white-vs-rogers.html">Gibbs-White vs Rogers</a>
+        <a class="card" href="vs/gibbs-white-vs-casemiro.html">Gibbs-White vs Casemiro</a>
+        <a class="card" href="vs/gibbs-white-vs-wilson.html">Gibbs-White vs Wilson</a>
+        <a class="card" href="vs/gibbs-white-vs-szoboszlai.html">Gibbs-White vs Szoboszlai</a>
+        <a class="card" href="vs/gibbs-white-vs-saka.html">Gibbs-White vs Saka</a>
+        <a class="card" href="vs/gibbs-white-vs-enzo.html">Gibbs-White vs Enzo</a>
+        <a class="card" href="vs/gibbs-white-vs-garner.html">Gibbs-White vs Garner</a>
+        <a class="card" href="vs/gibbs-white-vs-watkins.html">Gibbs-White vs Watkins</a>
+        <a class="card" href="vs/gibbs-white-vs-bruno-g.html">Gibbs-White vs Bruno G.</a>
+        <a class="card" href="vs/gibbs-white-vs-dewsbury-hall.html">Gibbs-White vs Dewsbury-Hall</a>
+        <a class="card" href="vs/gibbs-white-vs-cunha.html">Gibbs-White vs Cunha</a>
+        <a class="card" href="vs/gibbs-white-vs-gravenberch.html">Gibbs-White vs Gravenberch</a>
+        <a class="card" href="vs/gibbs-white-vs-ele-fée.html">Gibbs-White vs E.Le Fée</a>
+        <a class="card" href="vs/gibbs-white-vs-calvert-lewin.html">Gibbs-White vs Calvert-Lewin</a>
+        <a class="card" href="vs/gibbs-white-vs-mbeumo.html">Gibbs-White vs Mbeumo</a>
+        <a class="card" href="vs/gibbs-white-vs-stach.html">Gibbs-White vs Stach</a>
+        <a class="card" href="vs/anderson-vs-joão-pedro.html">Anderson vs João Pedro</a>
+        <a class="card" href="vs/anderson-vs-bowen.html">Anderson vs Bowen</a>
+        <a class="card" href="vs/anderson-vs-rogers.html">Anderson vs Rogers</a>
+        <a class="card" href="vs/anderson-vs-casemiro.html">Anderson vs Casemiro</a>
+        <a class="card" href="vs/anderson-vs-wilson.html">Anderson vs Wilson</a>
+        <a class="card" href="vs/anderson-vs-szoboszlai.html">Anderson vs Szoboszlai</a>
+        <a class="card" href="vs/anderson-vs-saka.html">Anderson vs Saka</a>
+        <a class="card" href="vs/anderson-vs-enzo.html">Anderson vs Enzo</a>
+        <a class="card" href="vs/anderson-vs-garner.html">Anderson vs Garner</a>
+        <a class="card" href="vs/anderson-vs-watkins.html">Anderson vs Watkins</a>
+        <a class="card" href="vs/anderson-vs-bruno-g.html">Anderson vs Bruno G.</a>
+        <a class="card" href="vs/anderson-vs-dewsbury-hall.html">Anderson vs Dewsbury-Hall</a>
+        <a class="card" href="vs/anderson-vs-cunha.html">Anderson vs Cunha</a>
+        <a class="card" href="vs/anderson-vs-gravenberch.html">Anderson vs Gravenberch</a>
+        <a class="card" href="vs/anderson-vs-ele-fée.html">Anderson vs E.Le Fée</a>
+        <a class="card" href="vs/anderson-vs-calvert-lewin.html">Anderson vs Calvert-Lewin</a>
+        <a class="card" href="vs/anderson-vs-mbeumo.html">Anderson vs Mbeumo</a>
+        <a class="card" href="vs/anderson-vs-stach.html">Anderson vs Stach</a>
+        <a class="card" href="vs/joão-pedro-vs-bowen.html">João Pedro vs Bowen</a>
+        <a class="card" href="vs/joão-pedro-vs-rogers.html">João Pedro vs Rogers</a>
+        <a class="card" href="vs/joão-pedro-vs-casemiro.html">João Pedro vs Casemiro</a>
+        <a class="card" href="vs/joão-pedro-vs-wilson.html">João Pedro vs Wilson</a>
+        <a class="card" href="vs/joão-pedro-vs-szoboszlai.html">João Pedro vs Szoboszlai</a>
+        <a class="card" href="vs/joão-pedro-vs-saka.html">João Pedro vs Saka</a>
+        <a class="card" href="vs/joão-pedro-vs-enzo.html">João Pedro vs Enzo</a>
+        <a class="card" href="vs/joão-pedro-vs-garner.html">João Pedro vs Garner</a>
+        <a class="card" href="vs/joão-pedro-vs-watkins.html">João Pedro vs Watkins</a>
+        <a class="card" href="vs/joão-pedro-vs-bruno-g.html">João Pedro vs Bruno G.</a>
+        <a class="card" href="vs/joão-pedro-vs-dewsbury-hall.html">João Pedro vs Dewsbury-Hall</a>
+        <a class="card" href="vs/joão-pedro-vs-cunha.html">João Pedro vs Cunha</a>
+        <a class="card" href="vs/joão-pedro-vs-gravenberch.html">João Pedro vs Gravenberch</a>
+        <a class="card" href="vs/joão-pedro-vs-ele-fée.html">João Pedro vs E.Le Fée</a>
+        <a class="card" href="vs/joão-pedro-vs-calvert-lewin.html">João Pedro vs Calvert-Lewin</a>
+        <a class="card" href="vs/joão-pedro-vs-mbeumo.html">João Pedro vs Mbeumo</a>
+        <a class="card" href="vs/joão-pedro-vs-stach.html">João Pedro vs Stach</a>
+        <a class="card" href="vs/bowen-vs-rogers.html">Bowen vs Rogers</a>
+        <a class="card" href="vs/bowen-vs-casemiro.html">Bowen vs Casemiro</a>
+        <a class="card" href="vs/bowen-vs-wilson.html">Bowen vs Wilson</a>
+        <a class="card" href="vs/bowen-vs-szoboszlai.html">Bowen vs Szoboszlai</a>
+        <a class="card" href="vs/bowen-vs-saka.html">Bowen vs Saka</a>
+        <a class="card" href="vs/bowen-vs-enzo.html">Bowen vs Enzo</a>
+        <a class="card" href="vs/bowen-vs-garner.html">Bowen vs Garner</a>
+        <a class="card" href="vs/bowen-vs-watkins.html">Bowen vs Watkins</a>
+        <a class="card" href="vs/bowen-vs-bruno-g.html">Bowen vs Bruno G.</a>
+        <a class="card" href="vs/bowen-vs-dewsbury-hall.html">Bowen vs Dewsbury-Hall</a>
+        <a class="card" href="vs/bowen-vs-cunha.html">Bowen vs Cunha</a>
+        <a class="card" href="vs/bowen-vs-gravenberch.html">Bowen vs Gravenberch</a>
+        <a class="card" href="vs/bowen-vs-ele-fée.html">Bowen vs E.Le Fée</a>
+        <a class="card" href="vs/bowen-vs-calvert-lewin.html">Bowen vs Calvert-Lewin</a>
+        <a class="card" href="vs/bowen-vs-mbeumo.html">Bowen vs Mbeumo</a>
+        <a class="card" href="vs/bowen-vs-stach.html">Bowen vs Stach</a>
+        <a class="card" href="vs/rogers-vs-casemiro.html">Rogers vs Casemiro</a>
+        <a class="card" href="vs/rogers-vs-wilson.html">Rogers vs Wilson</a>
+        <a class="card" href="vs/rogers-vs-szoboszlai.html">Rogers vs Szoboszlai</a>
+        <a class="card" href="vs/rogers-vs-saka.html">Rogers vs Saka</a>
+        <a class="card" href="vs/rogers-vs-enzo.html">Rogers vs Enzo</a>
+        <a class="card" href="vs/rogers-vs-garner.html">Rogers vs Garner</a>
+        <a class="card" href="vs/rogers-vs-watkins.html">Rogers vs Watkins</a>
+        <a class="card" href="vs/rogers-vs-bruno-g.html">Rogers vs Bruno G.</a>
+        <a class="card" href="vs/rogers-vs-dewsbury-hall.html">Rogers vs Dewsbury-Hall</a>
+        <a class="card" href="vs/rogers-vs-cunha.html">Rogers vs Cunha</a>
+        <a class="card" href="vs/rogers-vs-gravenberch.html">Rogers vs Gravenberch</a>
+        <a class="card" href="vs/rogers-vs-ele-fée.html">Rogers vs E.Le Fée</a>
+        <a class="card" href="vs/rogers-vs-calvert-lewin.html">Rogers vs Calvert-Lewin</a>
+        <a class="card" href="vs/rogers-vs-mbeumo.html">Rogers vs Mbeumo</a>
+        <a class="card" href="vs/rogers-vs-stach.html">Rogers vs Stach</a>
+        <a class="card" href="vs/casemiro-vs-wilson.html">Casemiro vs Wilson</a>
+        <a class="card" href="vs/casemiro-vs-szoboszlai.html">Casemiro vs Szoboszlai</a>
+        <a class="card" href="vs/casemiro-vs-saka.html">Casemiro vs Saka</a>
+        <a class="card" href="vs/casemiro-vs-enzo.html">Casemiro vs Enzo</a>
+        <a class="card" href="vs/casemiro-vs-garner.html">Casemiro vs Garner</a>
+        <a class="card" href="vs/casemiro-vs-watkins.html">Casemiro vs Watkins</a>
+        <a class="card" href="vs/casemiro-vs-bruno-g.html">Casemiro vs Bruno G.</a>
+        <a class="card" href="vs/casemiro-vs-dewsbury-hall.html">Casemiro vs Dewsbury-Hall</a>
+        <a class="card" href="vs/casemiro-vs-cunha.html">Casemiro vs Cunha</a>
+        <a class="card" href="vs/casemiro-vs-gravenberch.html">Casemiro vs Gravenberch</a>
+        <a class="card" href="vs/casemiro-vs-ele-fée.html">Casemiro vs E.Le Fée</a>
+        <a class="card" href="vs/casemiro-vs-calvert-lewin.html">Casemiro vs Calvert-Lewin</a>
+        <a class="card" href="vs/casemiro-vs-mbeumo.html">Casemiro vs Mbeumo</a>
+        <a class="card" href="vs/casemiro-vs-stach.html">Casemiro vs Stach</a>
+        <a class="card" href="vs/wilson-vs-szoboszlai.html">Wilson vs Szoboszlai</a>
+        <a class="card" href="vs/wilson-vs-saka.html">Wilson vs Saka</a>
+        <a class="card" href="vs/wilson-vs-enzo.html">Wilson vs Enzo</a>
+        <a class="card" href="vs/wilson-vs-garner.html">Wilson vs Garner</a>
+        <a class="card" href="vs/wilson-vs-watkins.html">Wilson vs Watkins</a>
+        <a class="card" href="vs/wilson-vs-bruno-g.html">Wilson vs Bruno G.</a>
+        <a class="card" href="vs/wilson-vs-dewsbury-hall.html">Wilson vs Dewsbury-Hall</a>
+        <a class="card" href="vs/wilson-vs-cunha.html">Wilson vs Cunha</a>
+        <a class="card" href="vs/wilson-vs-gravenberch.html">Wilson vs Gravenberch</a>
+        <a class="card" href="vs/wilson-vs-ele-fée.html">Wilson vs E.Le Fée</a>
+        <a class="card" href="vs/wilson-vs-calvert-lewin.html">Wilson vs Calvert-Lewin</a>
+        <a class="card" href="vs/wilson-vs-mbeumo.html">Wilson vs Mbeumo</a>
+        <a class="card" href="vs/wilson-vs-stach.html">Wilson vs Stach</a>
+        <a class="card" href="vs/szoboszlai-vs-saka.html">Szoboszlai vs Saka</a>
+        <a class="card" href="vs/szoboszlai-vs-enzo.html">Szoboszlai vs Enzo</a>
+        <a class="card" href="vs/szoboszlai-vs-garner.html">Szoboszlai vs Garner</a>
+        <a class="card" href="vs/szoboszlai-vs-watkins.html">Szoboszlai vs Watkins</a>
+        <a class="card" href="vs/szoboszlai-vs-bruno-g.html">Szoboszlai vs Bruno G.</a>
+        <a class="card" href="vs/szoboszlai-vs-dewsbury-hall.html">Szoboszlai vs Dewsbury-Hall</a>
+        <a class="card" href="vs/szoboszlai-vs-cunha.html">Szoboszlai vs Cunha</a>
+        <a class="card" href="vs/szoboszlai-vs-gravenberch.html">Szoboszlai vs Gravenberch</a>
+        <a class="card" href="vs/szoboszlai-vs-ele-fée.html">Szoboszlai vs E.Le Fée</a>
+        <a class="card" href="vs/szoboszlai-vs-calvert-lewin.html">Szoboszlai vs Calvert-Lewin</a>
+        <a class="card" href="vs/szoboszlai-vs-mbeumo.html">Szoboszlai vs Mbeumo</a>
+        <a class="card" href="vs/szoboszlai-vs-stach.html">Szoboszlai vs Stach</a>
+        <a class="card" href="vs/saka-vs-enzo.html">Saka vs Enzo</a>
+        <a class="card" href="vs/saka-vs-garner.html">Saka vs Garner</a>
+        <a class="card" href="vs/saka-vs-watkins.html">Saka vs Watkins</a>
+        <a class="card" href="vs/saka-vs-bruno-g.html">Saka vs Bruno G.</a>
+        <a class="card" href="vs/saka-vs-dewsbury-hall.html">Saka vs Dewsbury-Hall</a>
+        <a class="card" href="vs/saka-vs-cunha.html">Saka vs Cunha</a>
+        <a class="card" href="vs/saka-vs-gravenberch.html">Saka vs Gravenberch</a>
+        <a class="card" href="vs/saka-vs-ele-fée.html">Saka vs E.Le Fée</a>
+        <a class="card" href="vs/saka-vs-calvert-lewin.html">Saka vs Calvert-Lewin</a>
+        <a class="card" href="vs/saka-vs-mbeumo.html">Saka vs Mbeumo</a>
+        <a class="card" href="vs/saka-vs-stach.html">Saka vs Stach</a>
+        <a class="card" href="vs/enzo-vs-garner.html">Enzo vs Garner</a>
+        <a class="card" href="vs/enzo-vs-watkins.html">Enzo vs Watkins</a>
+        <a class="card" href="vs/enzo-vs-bruno-g.html">Enzo vs Bruno G.</a>
+        <a class="card" href="vs/enzo-vs-dewsbury-hall.html">Enzo vs Dewsbury-Hall</a>
+        <a class="card" href="vs/enzo-vs-cunha.html">Enzo vs Cunha</a>
+        <a class="card" href="vs/enzo-vs-gravenberch.html">Enzo vs Gravenberch</a>
+        <a class="card" href="vs/enzo-vs-ele-fée.html">Enzo vs E.Le Fée</a>
+        <a class="card" href="vs/enzo-vs-calvert-lewin.html">Enzo vs Calvert-Lewin</a>
+        <a class="card" href="vs/enzo-vs-mbeumo.html">Enzo vs Mbeumo</a>
+        <a class="card" href="vs/enzo-vs-stach.html">Enzo vs Stach</a>
+        <a class="card" href="vs/garner-vs-watkins.html">Garner vs Watkins</a>
+        <a class="card" href="vs/garner-vs-bruno-g.html">Garner vs Bruno G.</a>
+        <a class="card" href="vs/garner-vs-dewsbury-hall.html">Garner vs Dewsbury-Hall</a>
+        <a class="card" href="vs/garner-vs-cunha.html">Garner vs Cunha</a>
+        <a class="card" href="vs/garner-vs-gravenberch.html">Garner vs Gravenberch</a>
+        <a class="card" href="vs/garner-vs-ele-fée.html">Garner vs E.Le Fée</a>
+        <a class="card" href="vs/garner-vs-calvert-lewin.html">Garner vs Calvert-Lewin</a>
+        <a class="card" href="vs/garner-vs-mbeumo.html">Garner vs Mbeumo</a>
+        <a class="card" href="vs/garner-vs-stach.html">Garner vs Stach</a>
+        <a class="card" href="vs/watkins-vs-bruno-g.html">Watkins vs Bruno G.</a>
+        <a class="card" href="vs/watkins-vs-dewsbury-hall.html">Watkins vs Dewsbury-Hall</a>
+        <a class="card" href="vs/watkins-vs-cunha.html">Watkins vs Cunha</a>
+        <a class="card" href="vs/watkins-vs-gravenberch.html">Watkins vs Gravenberch</a>
+        <a class="card" href="vs/watkins-vs-ele-fée.html">Watkins vs E.Le Fée</a>
+        <a class="card" href="vs/watkins-vs-calvert-lewin.html">Watkins vs Calvert-Lewin</a>
+        <a class="card" href="vs/watkins-vs-mbeumo.html">Watkins vs Mbeumo</a>
+        <a class="card" href="vs/watkins-vs-stach.html">Watkins vs Stach</a>
+        <a class="card" href="vs/bruno-g-vs-dewsbury-hall.html">Bruno G. vs Dewsbury-Hall</a>
+        <a class="card" href="vs/bruno-g-vs-cunha.html">Bruno G. vs Cunha</a>
+        <a class="card" href="vs/bruno-g-vs-gravenberch.html">Bruno G. vs Gravenberch</a>
+        <a class="card" href="vs/bruno-g-vs-ele-fée.html">Bruno G. vs E.Le Fée</a>
+        <a class="card" href="vs/bruno-g-vs-calvert-lewin.html">Bruno G. vs Calvert-Lewin</a>
+        <a class="card" href="vs/bruno-g-vs-mbeumo.html">Bruno G. vs Mbeumo</a>
+        <a class="card" href="vs/bruno-g-vs-stach.html">Bruno G. vs Stach</a>
+        <a class="card" href="vs/dewsbury-hall-vs-cunha.html">Dewsbury-Hall vs Cunha</a>
+        <a class="card" href="vs/dewsbury-hall-vs-gravenberch.html">Dewsbury-Hall vs Gravenberch</a>
+        <a class="card" href="vs/dewsbury-hall-vs-ele-fée.html">Dewsbury-Hall vs E.Le Fée</a>
+        <a class="card" href="vs/dewsbury-hall-vs-calvert-lewin.html">Dewsbury-Hall vs Calvert-Lewin</a>
+        <a class="card" href="vs/dewsbury-hall-vs-mbeumo.html">Dewsbury-Hall vs Mbeumo</a>
+        <a class="card" href="vs/dewsbury-hall-vs-stach.html">Dewsbury-Hall vs Stach</a>
+        <a class="card" href="vs/cunha-vs-gravenberch.html">Cunha vs Gravenberch</a>
+        <a class="card" href="vs/cunha-vs-ele-fée.html">Cunha vs E.Le Fée</a>
+        <a class="card" href="vs/cunha-vs-calvert-lewin.html">Cunha vs Calvert-Lewin</a>
+        <a class="card" href="vs/cunha-vs-mbeumo.html">Cunha vs Mbeumo</a>
+        <a class="card" href="vs/cunha-vs-stach.html">Cunha vs Stach</a>
+        <a class="card" href="vs/gravenberch-vs-ele-fée.html">Gravenberch vs E.Le Fée</a>
+        <a class="card" href="vs/gravenberch-vs-calvert-lewin.html">Gravenberch vs Calvert-Lewin</a>
+        <a class="card" href="vs/gravenberch-vs-mbeumo.html">Gravenberch vs Mbeumo</a>
+        <a class="card" href="vs/gravenberch-vs-stach.html">Gravenberch vs Stach</a>
+        <a class="card" href="vs/ele-fée-vs-calvert-lewin.html">E.Le Fée vs Calvert-Lewin</a>
+        <a class="card" href="vs/ele-fée-vs-mbeumo.html">E.Le Fée vs Mbeumo</a>
+        <a class="card" href="vs/ele-fée-vs-stach.html">E.Le Fée vs Stach</a>
+        <a class="card" href="vs/calvert-lewin-vs-mbeumo.html">Calvert-Lewin vs Mbeumo</a>
+        <a class="card" href="vs/calvert-lewin-vs-stach.html">Calvert-Lewin vs Stach</a>
+        <a class="card" href="vs/mbeumo-vs-stach.html">Mbeumo vs Stach</a>
+    </div>
+    <div class="footer">Site compiled automatically on 2026-05-22 10:57:07 UTC via Live API Infrastructure.</div>
+</body>
+</html>
