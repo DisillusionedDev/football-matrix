@@ -4,7 +4,7 @@ import requests
 from datetime import datetime
 
 # ==========================================
-# 1. THE LAYOUT TEMPLATE (CLEAN & DYNAMIC)
+# 1. THE LAYOUT TEMPLATE (DEFINED IN-FILE)
 # ==========================================
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -39,7 +39,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             <p class="text-slate-400 text-sm md:text-base">Role-weighted metric breakdown optimized for player tactical positions.</p>
         </div>
 
-        <!-- FPL Recommendation Matrix -->
+        <!-- Verdict Box -->
         <div class="bg-gradient-to-r from-emerald-950 to-slate-900 border border-emerald-500/30 rounded-xl p-6 mb-8 shadow-xl">
             <div class="flex items-center gap-2 mb-3">
                 <span class="flex h-3 w-3 relative">
@@ -91,7 +91,7 @@ def fetch_live_fpl_pool():
     all_players = data.get("elements", [])
     processed_players = []
     
-    # NOW INCLUDING DEFENDERS (2), MIDFIELDERS (3), AND FORWARDS (4)
+    # Grab Defenders (2), Midfielders (3), and Forwards (4) with real game time
     for p in all_players:
         minutes = p.get("minutes", 0)
         pos_id = p.get("element_type")
@@ -99,7 +99,6 @@ def fetch_live_fpl_pool():
         if pos_id in [2, 3, 4] and minutes > 600:
             match_segments = minutes / 90.0
             
-            # Helper to calculate clean per-90 metrics safely
             def per_90(field):
                 try:
                     return round(float(p.get(field, 0)) / match_segments, 2)
@@ -119,19 +118,18 @@ def fetch_live_fpl_pool():
                 "total_points": p.get("total_points", 0)
             })
 
-    # Keep top 35 player assets to maintain an expansive internal routing mesh
     return sorted(processed_players, key=lambda x: x["total_points"], reverse=True)[:35]
 
 
 # ==========================================
-# 3. STAT ROW GENERATION LOGIC WITH VISUAL INJECTION
+# 3. STAT ROW GENERATOR WITH POSITION INJECTION
 # ==========================================
 def build_metric_row(label, val_a, val_b, is_critical):
     total = (val_a + val_b) or 1.0
     pct_a = (val_a / total) * 100
     pct_b = (val_b / total) * 100
 
-    # If the stat is critical for this matchup, add a subtle border-left highlight accent
+    # Highlight style adjustments based on role importance
     row_border = "border-l-4 border-emerald-500/50 pl-2" if is_critical else "pl-3"
     label_style = "text-emerald-400 font-bold uppercase tracking-wider text-xs" if is_critical else "text-slate-400 font-normal uppercase tracking-wider text-xs"
 
@@ -171,8 +169,8 @@ def execute_matrix_pipeline():
         filename = f"{slug_a}-vs-{slug_b}.html"
         filepath = os.path.join('public/vs', filename)
         
-        # Build out dynamic, position-aware metric rows
         stat_rows_html = ""
+        # Setup which positions get which stats highlighted (2=Def, 3=Mid, 4=Fwd)
         metrics_config = [
             {"key": "goals", "label": "Goals", "critical_roles": [4]},
             {"key": "xg", "label": "Expected Goals (xG)", "critical_roles": [4]},
@@ -183,11 +181,9 @@ def execute_matrix_pipeline():
         ]
 
         for metric in metrics_config:
-            # Highlight metric if it's crucial to EITHER player's actual position
             is_critical = (player_a['position_id'] in metric["critical_roles"]) or (player_b['position_id'] in metric["critical_roles"])
             stat_rows_html += build_metric_row(metric["label"], player_a[metric["key"]], player_b[metric["key"]], is_critical)
 
-        # Basic text layout helper for contextual clarity
         verdict = f"Comparing <strong>{player_a['name']}</strong> ({player_a['position_name']}) and <strong>{player_b['name']}</strong> ({player_b['position_name']}). "
         if player_a['total_points'] > player_b['total_points']:
             verdict += f"Tactically, {player_a['name']} holds the seasonal form advantage in the selection pool."
@@ -230,7 +226,7 @@ def build_central_index(links, timestamp):
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; max-width: 900px; margin: 40px auto; padding: 0 20px; }}
         h1 {{ color: #34d399; text-align: center; font-size: 2.5rem; font-weight: 900; letter-spacing: -0.025em; }}
-        .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 40px; }}
+        .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 40px; }}
         .card {{ background: #1e293b; padding: 14px; border-radius: 10px; text-align: center; border: 1px solid #334155; text-decoration: none; color: #f8fafc; font-weight: 500; transition: all 0.2s; }}
         .card:hover {{ border-color: #34d399; background: #1e293b; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(52, 211, 153, 0.1); }}
         .footer {{ text-align: center; font-size: 0.8rem; color: #64748b; margin-top: 60px; border-top: 1px solid #334155; padding-top: 20px; }}
