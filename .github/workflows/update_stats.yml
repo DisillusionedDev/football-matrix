@@ -1,0 +1,32 @@
+name: Daily Stats Update
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs automatically every day at midnight
+  workflow_dispatch: # Adds a button so you can trigger it manually whenever you want
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository code
+      uses: actions/checkout@v4
+
+    - name: Set up Python environment
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Install required tools
+      run: pip install requests
+
+    - name: Run data engine script
+      run: python engine.py
+
+    - name: Automatically save new pages back to GitHub
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add docs/
+        git commit -m "Automated daily player matrix update" || exit 0
+        git push
