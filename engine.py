@@ -10,7 +10,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="c_K6M_6ZUJTCpaExzxn5HyzwgyupoiwBwC2TUBi5RRg" />
+    <meta name="google-site-verification" content="LQrYOrkY5MA29hc3yXpovp3Uc2M4kb3BDS9LM2ewRhU" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{PLAYER_A}} vs {{PLAYER_B}} Advanced Stats, Role Comparison & Debate Matrix</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -221,7 +221,7 @@ def build_central_index(links, timestamp):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="c_K6M_6ZUJTCpaExzxn5HyzwgyupoiwBwC2TUBi5RRg" />
+    <meta name="google-site-verification" content="LQrYOrkY5MA29hc3yXpovp3Uc2M4kb3BDS9LM2ewRhU" />
     <title>DEBATE.FC | Head-to-Head Player Analytics Engine</title>
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; max-width: 900px; margin: 40px auto; padding: 0 20px; }}
