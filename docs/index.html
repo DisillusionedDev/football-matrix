@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="c_K6M_6ZUJTCpaExzxn5HyzwgyupoiwBwC2TUBi5RRg" />
+    <title>DEBATE.FC | Head-to-Head Player Analytics Engine</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        h1 { color: #34d399; text-align: center; font-size: 2.5rem; font-weight: 900; letter-spacing: -0.025em; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 40px; }
+        .card { background: #1e293b; padding: 14px; border-radius: 10px; text-align: center; border: 1px solid #334155; text-decoration: none; color: #f8fafc; font-weight: 500; transition: all 0.2s; }
+        .card:hover { border-color: #34d399; background: #1e293b; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(52, 211, 153, 0.1); }
+        .footer { text-align: center; font-size: 0.8rem; color: #64748b; margin-top: 60px; border-top: 1px solid #334155; padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>📊 DEBATE.FC DATA CORE</h1>
+    <p style="text-align:center; color:#94a3b8;">Select a long-tail search matrix connection node below to inspect performance indicators.</p>
+    <div class="grid">
+            <a class="card" href="vs/haaland-vs-bfernandes.html">Haaland (Forward) vs B.Fernandes (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-gabriel.html">Haaland (Forward) vs Gabriel (Defender)</a>
+        <a class="card" href="vs/haaland-vs-semenyo.html">Haaland (Forward) vs Semenyo (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-rice.html">Haaland (Forward) vs Rice (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-thiago.html">Haaland (Forward) vs Thiago (Forward)</a>
+        <a class="card" href="vs/haaland-vs-guéhi.html">Haaland (Forward) vs Guéhi (Defender)</a>
+        <a class="card" href="vs/haaland-vs-gibbs-white.html">Haaland (Forward) vs Gibbs-White (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-anderson.html">Haaland (Forward) vs Anderson (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-joão-pedro.html">Haaland (Forward) vs João Pedro (Forward)</a>
+        <a class="card" href="vs/haaland-vs-bowen.html">Haaland (Forward) vs Bowen (Forward)</a>
+        <a class="card" href="vs/haaland-vs-senesi.html">Haaland (Forward) vs Senesi (Defender)</a>
+        <a class="card" href="vs/haaland-vs-virgil.html">Haaland (Forward) vs Virgil (Defender)</a>
+        <a class="card" href="vs/haaland-vs-rogers.html">Haaland (Forward) vs Rogers (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-tarkowski.html">Haaland (Forward) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/haaland-vs-casemiro.html">Haaland (Forward) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-wilson.html">Haaland (Forward) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-oreilly.html">Haaland (Forward) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/haaland-vs-truffert.html">Haaland (Forward) vs Truffert (Defender)</a>
+        <a class="card" href="vs/haaland-vs-szoboszlai.html">Haaland (Forward) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-saka.html">Haaland (Forward) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-enzo.html">Haaland (Forward) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-garner.html">Haaland (Forward) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-watkins.html">Haaland (Forward) vs Watkins (Forward)</a>
+        <a class="card" href="vs/haaland-vs-lacroix.html">Haaland (Forward) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/haaland-vs-matheus-n.html">Haaland (Forward) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/haaland-vs-bruno-g.html">Haaland (Forward) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-jtimber.html">Haaland (Forward) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/haaland-vs-dewsbury-hall.html">Haaland (Forward) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-van-hecke.html">Haaland (Forward) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/haaland-vs-mukiele.html">Haaland (Forward) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/haaland-vs-cunha.html">Haaland (Forward) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-gravenberch.html">Haaland (Forward) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-ele-fée.html">Haaland (Forward) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/haaland-vs-calvert-lewin.html">Haaland (Forward) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/bfernandes-vs-gabriel.html">B.Fernandes (Midfielder) vs Gabriel (Defender)</a>
+        <a class="card" href="vs/bfernandes-vs-semenyo.html">B.Fernandes (Midfielder) vs Semenyo (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-rice.html">B.Fernandes (Midfielder) vs Rice (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-thiago.html">B.Fernandes (Midfielder) vs Thiago (Forward)</a>
+        <a class="card" href="vs/bfernandes-vs-guéhi.html">B.Fernandes (Midfielder) vs Guéhi (Defender)</a>
+        <a class="card" href="vs/bfernandes-vs-gibbs-white.html">B.Fernandes (Midfielder) vs Gibbs-White (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-anderson.html">B.Fernandes (Midfielder) vs Anderson (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-joão-pedro.html">B.Fernandes (Midfielder) vs João Pedro (Forward)</a>
+        <a class="card" href="vs/bfernandes-vs-bowen.html">B.Fernandes (Midfielder) vs Bowen (Forward)</a>
+        <a class="card" href="vs/bfernandes-vs-senesi.html">B.Fernandes (Midfielder) vs Senesi (Defender)</a>
+        <a class="card" href="vs/bfernandes-vs-virgil.html">B.Fernandes (Midfielder) vs Virgil (Defender)</a>
+        <a class="card" href="vs/bfernandes-vs-rogers.html">B.Fernandes (Midfielder) vs Rogers (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-tarkowski.html">B.Fernandes (Midfielder) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/bfernandes-vs-casemiro.html">B.Fernandes (Midfielder) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-wilson.html">B.Fernandes (Midfielder) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-oreilly.html">B.Fernandes (Midfielder) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/bfernandes-vs-truffert.html">B.Fernandes (Midfielder) vs Truffert (Defender)</a>
+        <a class="card" href="vs/bfernandes-vs-szoboszlai.html">B.Fernandes (Midfielder) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-saka.html">B.Fernandes (Midfielder) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-enzo.html">B.Fernandes (Midfielder) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-garner.html">B.Fernandes (Midfielder) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-watkins.html">B.Fernandes (Midfielder) vs Watkins (Forward)</a>
+        <a class="card" href="vs/bfernandes-vs-lacroix.html">B.Fernandes (Midfielder) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/bfernandes-vs-matheus-n.html">B.Fernandes (Midfielder) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/bfernandes-vs-bruno-g.html">B.Fernandes (Midfielder) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-jtimber.html">B.Fernandes (Midfielder) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/bfernandes-vs-dewsbury-hall.html">B.Fernandes (Midfielder) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-van-hecke.html">B.Fernandes (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/bfernandes-vs-mukiele.html">B.Fernandes (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/bfernandes-vs-cunha.html">B.Fernandes (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-gravenberch.html">B.Fernandes (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-ele-fée.html">B.Fernandes (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/bfernandes-vs-calvert-lewin.html">B.Fernandes (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/gabriel-vs-semenyo.html">Gabriel (Defender) vs Semenyo (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-rice.html">Gabriel (Defender) vs Rice (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-thiago.html">Gabriel (Defender) vs Thiago (Forward)</a>
+        <a class="card" href="vs/gabriel-vs-guéhi.html">Gabriel (Defender) vs Guéhi (Defender)</a>
+        <a class="card" href="vs/gabriel-vs-gibbs-white.html">Gabriel (Defender) vs Gibbs-White (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-anderson.html">Gabriel (Defender) vs Anderson (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-joão-pedro.html">Gabriel (Defender) vs João Pedro (Forward)</a>
+        <a class="card" href="vs/gabriel-vs-bowen.html">Gabriel (Defender) vs Bowen (Forward)</a>
+        <a class="card" href="vs/gabriel-vs-senesi.html">Gabriel (Defender) vs Senesi (Defender)</a>
+        <a class="card" href="vs/gabriel-vs-virgil.html">Gabriel (Defender) vs Virgil (Defender)</a>
+        <a class="card" href="vs/gabriel-vs-rogers.html">Gabriel (Defender) vs Rogers (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-tarkowski.html">Gabriel (Defender) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/gabriel-vs-casemiro.html">Gabriel (Defender) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-wilson.html">Gabriel (Defender) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-oreilly.html">Gabriel (Defender) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/gabriel-vs-truffert.html">Gabriel (Defender) vs Truffert (Defender)</a>
+        <a class="card" href="vs/gabriel-vs-szoboszlai.html">Gabriel (Defender) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-saka.html">Gabriel (Defender) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-enzo.html">Gabriel (Defender) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-garner.html">Gabriel (Defender) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-watkins.html">Gabriel (Defender) vs Watkins (Forward)</a>
+        <a class="card" href="vs/gabriel-vs-lacroix.html">Gabriel (Defender) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/gabriel-vs-matheus-n.html">Gabriel (Defender) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/gabriel-vs-bruno-g.html">Gabriel (Defender) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-jtimber.html">Gabriel (Defender) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/gabriel-vs-dewsbury-hall.html">Gabriel (Defender) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-van-hecke.html">Gabriel (Defender) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/gabriel-vs-mukiele.html">Gabriel (Defender) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/gabriel-vs-cunha.html">Gabriel (Defender) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-gravenberch.html">Gabriel (Defender) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-ele-fée.html">Gabriel (Defender) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/gabriel-vs-calvert-lewin.html">Gabriel (Defender) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/semenyo-vs-rice.html">Semenyo (Midfielder) vs Rice (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-thiago.html">Semenyo (Midfielder) vs Thiago (Forward)</a>
+        <a class="card" href="vs/semenyo-vs-guéhi.html">Semenyo (Midfielder) vs Guéhi (Defender)</a>
+        <a class="card" href="vs/semenyo-vs-gibbs-white.html">Semenyo (Midfielder) vs Gibbs-White (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-anderson.html">Semenyo (Midfielder) vs Anderson (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-joão-pedro.html">Semenyo (Midfielder) vs João Pedro (Forward)</a>
+        <a class="card" href="vs/semenyo-vs-bowen.html">Semenyo (Midfielder) vs Bowen (Forward)</a>
+        <a class="card" href="vs/semenyo-vs-senesi.html">Semenyo (Midfielder) vs Senesi (Defender)</a>
+        <a class="card" href="vs/semenyo-vs-virgil.html">Semenyo (Midfielder) vs Virgil (Defender)</a>
+        <a class="card" href="vs/semenyo-vs-rogers.html">Semenyo (Midfielder) vs Rogers (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-tarkowski.html">Semenyo (Midfielder) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/semenyo-vs-casemiro.html">Semenyo (Midfielder) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-wilson.html">Semenyo (Midfielder) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-oreilly.html">Semenyo (Midfielder) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/semenyo-vs-truffert.html">Semenyo (Midfielder) vs Truffert (Defender)</a>
+        <a class="card" href="vs/semenyo-vs-szoboszlai.html">Semenyo (Midfielder) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-saka.html">Semenyo (Midfielder) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-enzo.html">Semenyo (Midfielder) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-garner.html">Semenyo (Midfielder) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-watkins.html">Semenyo (Midfielder) vs Watkins (Forward)</a>
+        <a class="card" href="vs/semenyo-vs-lacroix.html">Semenyo (Midfielder) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/semenyo-vs-matheus-n.html">Semenyo (Midfielder) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/semenyo-vs-bruno-g.html">Semenyo (Midfielder) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-jtimber.html">Semenyo (Midfielder) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/semenyo-vs-dewsbury-hall.html">Semenyo (Midfielder) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-van-hecke.html">Semenyo (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/semenyo-vs-mukiele.html">Semenyo (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/semenyo-vs-cunha.html">Semenyo (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-gravenberch.html">Semenyo (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-ele-fée.html">Semenyo (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/semenyo-vs-calvert-lewin.html">Semenyo (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/rice-vs-thiago.html">Rice (Midfielder) vs Thiago (Forward)</a>
+        <a class="card" href="vs/rice-vs-guéhi.html">Rice (Midfielder) vs Guéhi (Defender)</a>
+        <a class="card" href="vs/rice-vs-gibbs-white.html">Rice (Midfielder) vs Gibbs-White (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-anderson.html">Rice (Midfielder) vs Anderson (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-joão-pedro.html">Rice (Midfielder) vs João Pedro (Forward)</a>
+        <a class="card" href="vs/rice-vs-bowen.html">Rice (Midfielder) vs Bowen (Forward)</a>
+        <a class="card" href="vs/rice-vs-senesi.html">Rice (Midfielder) vs Senesi (Defender)</a>
+        <a class="card" href="vs/rice-vs-virgil.html">Rice (Midfielder) vs Virgil (Defender)</a>
+        <a class="card" href="vs/rice-vs-rogers.html">Rice (Midfielder) vs Rogers (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-tarkowski.html">Rice (Midfielder) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/rice-vs-casemiro.html">Rice (Midfielder) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-wilson.html">Rice (Midfielder) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-oreilly.html">Rice (Midfielder) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/rice-vs-truffert.html">Rice (Midfielder) vs Truffert (Defender)</a>
+        <a class="card" href="vs/rice-vs-szoboszlai.html">Rice (Midfielder) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-saka.html">Rice (Midfielder) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-enzo.html">Rice (Midfielder) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-garner.html">Rice (Midfielder) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-watkins.html">Rice (Midfielder) vs Watkins (Forward)</a>
+        <a class="card" href="vs/rice-vs-lacroix.html">Rice (Midfielder) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/rice-vs-matheus-n.html">Rice (Midfielder) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/rice-vs-bruno-g.html">Rice (Midfielder) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-jtimber.html">Rice (Midfielder) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/rice-vs-dewsbury-hall.html">Rice (Midfielder) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-van-hecke.html">Rice (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/rice-vs-mukiele.html">Rice (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/rice-vs-cunha.html">Rice (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-gravenberch.html">Rice (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-ele-fée.html">Rice (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/rice-vs-calvert-lewin.html">Rice (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/thiago-vs-guéhi.html">Thiago (Forward) vs Guéhi (Defender)</a>
+        <a class="card" href="vs/thiago-vs-gibbs-white.html">Thiago (Forward) vs Gibbs-White (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-anderson.html">Thiago (Forward) vs Anderson (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-joão-pedro.html">Thiago (Forward) vs João Pedro (Forward)</a>
+        <a class="card" href="vs/thiago-vs-bowen.html">Thiago (Forward) vs Bowen (Forward)</a>
+        <a class="card" href="vs/thiago-vs-senesi.html">Thiago (Forward) vs Senesi (Defender)</a>
+        <a class="card" href="vs/thiago-vs-virgil.html">Thiago (Forward) vs Virgil (Defender)</a>
+        <a class="card" href="vs/thiago-vs-rogers.html">Thiago (Forward) vs Rogers (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-tarkowski.html">Thiago (Forward) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/thiago-vs-casemiro.html">Thiago (Forward) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-wilson.html">Thiago (Forward) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-oreilly.html">Thiago (Forward) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/thiago-vs-truffert.html">Thiago (Forward) vs Truffert (Defender)</a>
+        <a class="card" href="vs/thiago-vs-szoboszlai.html">Thiago (Forward) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-saka.html">Thiago (Forward) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-enzo.html">Thiago (Forward) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-garner.html">Thiago (Forward) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-watkins.html">Thiago (Forward) vs Watkins (Forward)</a>
+        <a class="card" href="vs/thiago-vs-lacroix.html">Thiago (Forward) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/thiago-vs-matheus-n.html">Thiago (Forward) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/thiago-vs-bruno-g.html">Thiago (Forward) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-jtimber.html">Thiago (Forward) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/thiago-vs-dewsbury-hall.html">Thiago (Forward) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-van-hecke.html">Thiago (Forward) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/thiago-vs-mukiele.html">Thiago (Forward) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/thiago-vs-cunha.html">Thiago (Forward) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-gravenberch.html">Thiago (Forward) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-ele-fée.html">Thiago (Forward) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/thiago-vs-calvert-lewin.html">Thiago (Forward) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/guéhi-vs-gibbs-white.html">Guéhi (Defender) vs Gibbs-White (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-anderson.html">Guéhi (Defender) vs Anderson (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-joão-pedro.html">Guéhi (Defender) vs João Pedro (Forward)</a>
+        <a class="card" href="vs/guéhi-vs-bowen.html">Guéhi (Defender) vs Bowen (Forward)</a>
+        <a class="card" href="vs/guéhi-vs-senesi.html">Guéhi (Defender) vs Senesi (Defender)</a>
+        <a class="card" href="vs/guéhi-vs-virgil.html">Guéhi (Defender) vs Virgil (Defender)</a>
+        <a class="card" href="vs/guéhi-vs-rogers.html">Guéhi (Defender) vs Rogers (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-tarkowski.html">Guéhi (Defender) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/guéhi-vs-casemiro.html">Guéhi (Defender) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-wilson.html">Guéhi (Defender) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-oreilly.html">Guéhi (Defender) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/guéhi-vs-truffert.html">Guéhi (Defender) vs Truffert (Defender)</a>
+        <a class="card" href="vs/guéhi-vs-szoboszlai.html">Guéhi (Defender) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-saka.html">Guéhi (Defender) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-enzo.html">Guéhi (Defender) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-garner.html">Guéhi (Defender) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-watkins.html">Guéhi (Defender) vs Watkins (Forward)</a>
+        <a class="card" href="vs/guéhi-vs-lacroix.html">Guéhi (Defender) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/guéhi-vs-matheus-n.html">Guéhi (Defender) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/guéhi-vs-bruno-g.html">Guéhi (Defender) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-jtimber.html">Guéhi (Defender) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/guéhi-vs-dewsbury-hall.html">Guéhi (Defender) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-van-hecke.html">Guéhi (Defender) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/guéhi-vs-mukiele.html">Guéhi (Defender) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/guéhi-vs-cunha.html">Guéhi (Defender) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-gravenberch.html">Guéhi (Defender) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-ele-fée.html">Guéhi (Defender) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/guéhi-vs-calvert-lewin.html">Guéhi (Defender) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/gibbs-white-vs-anderson.html">Gibbs-White (Midfielder) vs Anderson (Midfielder)</a>
+        <a class="card" href="vs/gibbs-white-vs-joão-pedro.html">Gibbs-White (Midfielder) vs João Pedro (Forward)</a>
+        <a class="card" href="vs/gibbs-white-vs-bowen.html">Gibbs-White (Midfielder) vs Bowen (Forward)</a>
+        <a class="card" href="vs/gibbs-white-vs-senesi.html">Gibbs-White (Midfielder) vs Senesi (Defender)</a>
+        <a class="card" href="vs/gibbs-white-vs-virgil.html">Gibbs-White (Midfielder) vs Virgil (Defender)</a>
+        <a class="card" href="vs/gibbs-white-vs-rogers.html">Gibbs-White (Midfielder) vs Rogers (Midfielder)</a>
+        <a class="card" href="vs/gibbs-white-vs-tarkowski.html">Gibbs-White (Midfielder) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/gibbs-white-vs-casemiro.html">Gibbs-White (Midfielder) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/gibbs-white-vs-wilson.html">Gibbs-White (Midfielder) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/gibbs-white-vs-oreilly.html">Gibbs-White (Midfielder) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/gibbs-white-vs-truffert.html">Gibbs-White (Midfielder) vs Truffert (Defender)</a>
+        <a class="card" href="vs/gibbs-white-vs-szoboszlai.html">Gibbs-White (Midfielder) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/gibbs-white-vs-saka.html">Gibbs-White (Midfielder) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/gibbs-white-vs-enzo.html">Gibbs-White (Midfielder) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/gibbs-white-vs-garner.html">Gibbs-White (Midfielder) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/gibbs-white-vs-watkins.html">Gibbs-White (Midfielder) vs Watkins (Forward)</a>
+        <a class="card" href="vs/gibbs-white-vs-lacroix.html">Gibbs-White (Midfielder) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/gibbs-white-vs-matheus-n.html">Gibbs-White (Midfielder) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/gibbs-white-vs-bruno-g.html">Gibbs-White (Midfielder) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/gibbs-white-vs-jtimber.html">Gibbs-White (Midfielder) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/gibbs-white-vs-dewsbury-hall.html">Gibbs-White (Midfielder) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/gibbs-white-vs-van-hecke.html">Gibbs-White (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/gibbs-white-vs-mukiele.html">Gibbs-White (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/gibbs-white-vs-cunha.html">Gibbs-White (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/gibbs-white-vs-gravenberch.html">Gibbs-White (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/gibbs-white-vs-ele-fée.html">Gibbs-White (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/gibbs-white-vs-calvert-lewin.html">Gibbs-White (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/anderson-vs-joão-pedro.html">Anderson (Midfielder) vs João Pedro (Forward)</a>
+        <a class="card" href="vs/anderson-vs-bowen.html">Anderson (Midfielder) vs Bowen (Forward)</a>
+        <a class="card" href="vs/anderson-vs-senesi.html">Anderson (Midfielder) vs Senesi (Defender)</a>
+        <a class="card" href="vs/anderson-vs-virgil.html">Anderson (Midfielder) vs Virgil (Defender)</a>
+        <a class="card" href="vs/anderson-vs-rogers.html">Anderson (Midfielder) vs Rogers (Midfielder)</a>
+        <a class="card" href="vs/anderson-vs-tarkowski.html">Anderson (Midfielder) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/anderson-vs-casemiro.html">Anderson (Midfielder) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/anderson-vs-wilson.html">Anderson (Midfielder) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/anderson-vs-oreilly.html">Anderson (Midfielder) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/anderson-vs-truffert.html">Anderson (Midfielder) vs Truffert (Defender)</a>
+        <a class="card" href="vs/anderson-vs-szoboszlai.html">Anderson (Midfielder) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/anderson-vs-saka.html">Anderson (Midfielder) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/anderson-vs-enzo.html">Anderson (Midfielder) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/anderson-vs-garner.html">Anderson (Midfielder) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/anderson-vs-watkins.html">Anderson (Midfielder) vs Watkins (Forward)</a>
+        <a class="card" href="vs/anderson-vs-lacroix.html">Anderson (Midfielder) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/anderson-vs-matheus-n.html">Anderson (Midfielder) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/anderson-vs-bruno-g.html">Anderson (Midfielder) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/anderson-vs-jtimber.html">Anderson (Midfielder) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/anderson-vs-dewsbury-hall.html">Anderson (Midfielder) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/anderson-vs-van-hecke.html">Anderson (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/anderson-vs-mukiele.html">Anderson (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/anderson-vs-cunha.html">Anderson (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/anderson-vs-gravenberch.html">Anderson (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/anderson-vs-ele-fée.html">Anderson (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/anderson-vs-calvert-lewin.html">Anderson (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/joão-pedro-vs-bowen.html">João Pedro (Forward) vs Bowen (Forward)</a>
+        <a class="card" href="vs/joão-pedro-vs-senesi.html">João Pedro (Forward) vs Senesi (Defender)</a>
+        <a class="card" href="vs/joão-pedro-vs-virgil.html">João Pedro (Forward) vs Virgil (Defender)</a>
+        <a class="card" href="vs/joão-pedro-vs-rogers.html">João Pedro (Forward) vs Rogers (Midfielder)</a>
+        <a class="card" href="vs/joão-pedro-vs-tarkowski.html">João Pedro (Forward) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/joão-pedro-vs-casemiro.html">João Pedro (Forward) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/joão-pedro-vs-wilson.html">João Pedro (Forward) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/joão-pedro-vs-oreilly.html">João Pedro (Forward) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/joão-pedro-vs-truffert.html">João Pedro (Forward) vs Truffert (Defender)</a>
+        <a class="card" href="vs/joão-pedro-vs-szoboszlai.html">João Pedro (Forward) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/joão-pedro-vs-saka.html">João Pedro (Forward) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/joão-pedro-vs-enzo.html">João Pedro (Forward) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/joão-pedro-vs-garner.html">João Pedro (Forward) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/joão-pedro-vs-watkins.html">João Pedro (Forward) vs Watkins (Forward)</a>
+        <a class="card" href="vs/joão-pedro-vs-lacroix.html">João Pedro (Forward) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/joão-pedro-vs-matheus-n.html">João Pedro (Forward) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/joão-pedro-vs-bruno-g.html">João Pedro (Forward) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/joão-pedro-vs-jtimber.html">João Pedro (Forward) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/joão-pedro-vs-dewsbury-hall.html">João Pedro (Forward) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/joão-pedro-vs-van-hecke.html">João Pedro (Forward) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/joão-pedro-vs-mukiele.html">João Pedro (Forward) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/joão-pedro-vs-cunha.html">João Pedro (Forward) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/joão-pedro-vs-gravenberch.html">João Pedro (Forward) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/joão-pedro-vs-ele-fée.html">João Pedro (Forward) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/joão-pedro-vs-calvert-lewin.html">João Pedro (Forward) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/bowen-vs-senesi.html">Bowen (Forward) vs Senesi (Defender)</a>
+        <a class="card" href="vs/bowen-vs-virgil.html">Bowen (Forward) vs Virgil (Defender)</a>
+        <a class="card" href="vs/bowen-vs-rogers.html">Bowen (Forward) vs Rogers (Midfielder)</a>
+        <a class="card" href="vs/bowen-vs-tarkowski.html">Bowen (Forward) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/bowen-vs-casemiro.html">Bowen (Forward) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/bowen-vs-wilson.html">Bowen (Forward) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/bowen-vs-oreilly.html">Bowen (Forward) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/bowen-vs-truffert.html">Bowen (Forward) vs Truffert (Defender)</a>
+        <a class="card" href="vs/bowen-vs-szoboszlai.html">Bowen (Forward) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/bowen-vs-saka.html">Bowen (Forward) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/bowen-vs-enzo.html">Bowen (Forward) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/bowen-vs-garner.html">Bowen (Forward) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/bowen-vs-watkins.html">Bowen (Forward) vs Watkins (Forward)</a>
+        <a class="card" href="vs/bowen-vs-lacroix.html">Bowen (Forward) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/bowen-vs-matheus-n.html">Bowen (Forward) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/bowen-vs-bruno-g.html">Bowen (Forward) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/bowen-vs-jtimber.html">Bowen (Forward) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/bowen-vs-dewsbury-hall.html">Bowen (Forward) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/bowen-vs-van-hecke.html">Bowen (Forward) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/bowen-vs-mukiele.html">Bowen (Forward) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/bowen-vs-cunha.html">Bowen (Forward) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/bowen-vs-gravenberch.html">Bowen (Forward) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/bowen-vs-ele-fée.html">Bowen (Forward) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/bowen-vs-calvert-lewin.html">Bowen (Forward) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/senesi-vs-virgil.html">Senesi (Defender) vs Virgil (Defender)</a>
+        <a class="card" href="vs/senesi-vs-rogers.html">Senesi (Defender) vs Rogers (Midfielder)</a>
+        <a class="card" href="vs/senesi-vs-tarkowski.html">Senesi (Defender) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/senesi-vs-casemiro.html">Senesi (Defender) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/senesi-vs-wilson.html">Senesi (Defender) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/senesi-vs-oreilly.html">Senesi (Defender) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/senesi-vs-truffert.html">Senesi (Defender) vs Truffert (Defender)</a>
+        <a class="card" href="vs/senesi-vs-szoboszlai.html">Senesi (Defender) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/senesi-vs-saka.html">Senesi (Defender) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/senesi-vs-enzo.html">Senesi (Defender) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/senesi-vs-garner.html">Senesi (Defender) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/senesi-vs-watkins.html">Senesi (Defender) vs Watkins (Forward)</a>
+        <a class="card" href="vs/senesi-vs-lacroix.html">Senesi (Defender) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/senesi-vs-matheus-n.html">Senesi (Defender) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/senesi-vs-bruno-g.html">Senesi (Defender) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/senesi-vs-jtimber.html">Senesi (Defender) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/senesi-vs-dewsbury-hall.html">Senesi (Defender) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/senesi-vs-van-hecke.html">Senesi (Defender) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/senesi-vs-mukiele.html">Senesi (Defender) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/senesi-vs-cunha.html">Senesi (Defender) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/senesi-vs-gravenberch.html">Senesi (Defender) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/senesi-vs-ele-fée.html">Senesi (Defender) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/senesi-vs-calvert-lewin.html">Senesi (Defender) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/virgil-vs-rogers.html">Virgil (Defender) vs Rogers (Midfielder)</a>
+        <a class="card" href="vs/virgil-vs-tarkowski.html">Virgil (Defender) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/virgil-vs-casemiro.html">Virgil (Defender) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/virgil-vs-wilson.html">Virgil (Defender) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/virgil-vs-oreilly.html">Virgil (Defender) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/virgil-vs-truffert.html">Virgil (Defender) vs Truffert (Defender)</a>
+        <a class="card" href="vs/virgil-vs-szoboszlai.html">Virgil (Defender) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/virgil-vs-saka.html">Virgil (Defender) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/virgil-vs-enzo.html">Virgil (Defender) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/virgil-vs-garner.html">Virgil (Defender) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/virgil-vs-watkins.html">Virgil (Defender) vs Watkins (Forward)</a>
+        <a class="card" href="vs/virgil-vs-lacroix.html">Virgil (Defender) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/virgil-vs-matheus-n.html">Virgil (Defender) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/virgil-vs-bruno-g.html">Virgil (Defender) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/virgil-vs-jtimber.html">Virgil (Defender) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/virgil-vs-dewsbury-hall.html">Virgil (Defender) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/virgil-vs-van-hecke.html">Virgil (Defender) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/virgil-vs-mukiele.html">Virgil (Defender) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/virgil-vs-cunha.html">Virgil (Defender) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/virgil-vs-gravenberch.html">Virgil (Defender) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/virgil-vs-ele-fée.html">Virgil (Defender) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/virgil-vs-calvert-lewin.html">Virgil (Defender) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/rogers-vs-tarkowski.html">Rogers (Midfielder) vs Tarkowski (Defender)</a>
+        <a class="card" href="vs/rogers-vs-casemiro.html">Rogers (Midfielder) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/rogers-vs-wilson.html">Rogers (Midfielder) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/rogers-vs-oreilly.html">Rogers (Midfielder) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/rogers-vs-truffert.html">Rogers (Midfielder) vs Truffert (Defender)</a>
+        <a class="card" href="vs/rogers-vs-szoboszlai.html">Rogers (Midfielder) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/rogers-vs-saka.html">Rogers (Midfielder) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/rogers-vs-enzo.html">Rogers (Midfielder) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/rogers-vs-garner.html">Rogers (Midfielder) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/rogers-vs-watkins.html">Rogers (Midfielder) vs Watkins (Forward)</a>
+        <a class="card" href="vs/rogers-vs-lacroix.html">Rogers (Midfielder) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/rogers-vs-matheus-n.html">Rogers (Midfielder) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/rogers-vs-bruno-g.html">Rogers (Midfielder) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/rogers-vs-jtimber.html">Rogers (Midfielder) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/rogers-vs-dewsbury-hall.html">Rogers (Midfielder) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/rogers-vs-van-hecke.html">Rogers (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/rogers-vs-mukiele.html">Rogers (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/rogers-vs-cunha.html">Rogers (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/rogers-vs-gravenberch.html">Rogers (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/rogers-vs-ele-fée.html">Rogers (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/rogers-vs-calvert-lewin.html">Rogers (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/tarkowski-vs-casemiro.html">Tarkowski (Defender) vs Casemiro (Midfielder)</a>
+        <a class="card" href="vs/tarkowski-vs-wilson.html">Tarkowski (Defender) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/tarkowski-vs-oreilly.html">Tarkowski (Defender) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/tarkowski-vs-truffert.html">Tarkowski (Defender) vs Truffert (Defender)</a>
+        <a class="card" href="vs/tarkowski-vs-szoboszlai.html">Tarkowski (Defender) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/tarkowski-vs-saka.html">Tarkowski (Defender) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/tarkowski-vs-enzo.html">Tarkowski (Defender) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/tarkowski-vs-garner.html">Tarkowski (Defender) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/tarkowski-vs-watkins.html">Tarkowski (Defender) vs Watkins (Forward)</a>
+        <a class="card" href="vs/tarkowski-vs-lacroix.html">Tarkowski (Defender) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/tarkowski-vs-matheus-n.html">Tarkowski (Defender) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/tarkowski-vs-bruno-g.html">Tarkowski (Defender) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/tarkowski-vs-jtimber.html">Tarkowski (Defender) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/tarkowski-vs-dewsbury-hall.html">Tarkowski (Defender) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/tarkowski-vs-van-hecke.html">Tarkowski (Defender) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/tarkowski-vs-mukiele.html">Tarkowski (Defender) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/tarkowski-vs-cunha.html">Tarkowski (Defender) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/tarkowski-vs-gravenberch.html">Tarkowski (Defender) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/tarkowski-vs-ele-fée.html">Tarkowski (Defender) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/tarkowski-vs-calvert-lewin.html">Tarkowski (Defender) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/casemiro-vs-wilson.html">Casemiro (Midfielder) vs Wilson (Midfielder)</a>
+        <a class="card" href="vs/casemiro-vs-oreilly.html">Casemiro (Midfielder) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/casemiro-vs-truffert.html">Casemiro (Midfielder) vs Truffert (Defender)</a>
+        <a class="card" href="vs/casemiro-vs-szoboszlai.html">Casemiro (Midfielder) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/casemiro-vs-saka.html">Casemiro (Midfielder) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/casemiro-vs-enzo.html">Casemiro (Midfielder) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/casemiro-vs-garner.html">Casemiro (Midfielder) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/casemiro-vs-watkins.html">Casemiro (Midfielder) vs Watkins (Forward)</a>
+        <a class="card" href="vs/casemiro-vs-lacroix.html">Casemiro (Midfielder) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/casemiro-vs-matheus-n.html">Casemiro (Midfielder) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/casemiro-vs-bruno-g.html">Casemiro (Midfielder) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/casemiro-vs-jtimber.html">Casemiro (Midfielder) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/casemiro-vs-dewsbury-hall.html">Casemiro (Midfielder) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/casemiro-vs-van-hecke.html">Casemiro (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/casemiro-vs-mukiele.html">Casemiro (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/casemiro-vs-cunha.html">Casemiro (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/casemiro-vs-gravenberch.html">Casemiro (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/casemiro-vs-ele-fée.html">Casemiro (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/casemiro-vs-calvert-lewin.html">Casemiro (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/wilson-vs-oreilly.html">Wilson (Midfielder) vs O'Reilly (Defender)</a>
+        <a class="card" href="vs/wilson-vs-truffert.html">Wilson (Midfielder) vs Truffert (Defender)</a>
+        <a class="card" href="vs/wilson-vs-szoboszlai.html">Wilson (Midfielder) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/wilson-vs-saka.html">Wilson (Midfielder) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/wilson-vs-enzo.html">Wilson (Midfielder) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/wilson-vs-garner.html">Wilson (Midfielder) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/wilson-vs-watkins.html">Wilson (Midfielder) vs Watkins (Forward)</a>
+        <a class="card" href="vs/wilson-vs-lacroix.html">Wilson (Midfielder) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/wilson-vs-matheus-n.html">Wilson (Midfielder) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/wilson-vs-bruno-g.html">Wilson (Midfielder) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/wilson-vs-jtimber.html">Wilson (Midfielder) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/wilson-vs-dewsbury-hall.html">Wilson (Midfielder) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/wilson-vs-van-hecke.html">Wilson (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/wilson-vs-mukiele.html">Wilson (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/wilson-vs-cunha.html">Wilson (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/wilson-vs-gravenberch.html">Wilson (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/wilson-vs-ele-fée.html">Wilson (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/wilson-vs-calvert-lewin.html">Wilson (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/oreilly-vs-truffert.html">O'Reilly (Defender) vs Truffert (Defender)</a>
+        <a class="card" href="vs/oreilly-vs-szoboszlai.html">O'Reilly (Defender) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/oreilly-vs-saka.html">O'Reilly (Defender) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/oreilly-vs-enzo.html">O'Reilly (Defender) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/oreilly-vs-garner.html">O'Reilly (Defender) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/oreilly-vs-watkins.html">O'Reilly (Defender) vs Watkins (Forward)</a>
+        <a class="card" href="vs/oreilly-vs-lacroix.html">O'Reilly (Defender) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/oreilly-vs-matheus-n.html">O'Reilly (Defender) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/oreilly-vs-bruno-g.html">O'Reilly (Defender) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/oreilly-vs-jtimber.html">O'Reilly (Defender) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/oreilly-vs-dewsbury-hall.html">O'Reilly (Defender) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/oreilly-vs-van-hecke.html">O'Reilly (Defender) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/oreilly-vs-mukiele.html">O'Reilly (Defender) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/oreilly-vs-cunha.html">O'Reilly (Defender) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/oreilly-vs-gravenberch.html">O'Reilly (Defender) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/oreilly-vs-ele-fée.html">O'Reilly (Defender) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/oreilly-vs-calvert-lewin.html">O'Reilly (Defender) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/truffert-vs-szoboszlai.html">Truffert (Defender) vs Szoboszlai (Midfielder)</a>
+        <a class="card" href="vs/truffert-vs-saka.html">Truffert (Defender) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/truffert-vs-enzo.html">Truffert (Defender) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/truffert-vs-garner.html">Truffert (Defender) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/truffert-vs-watkins.html">Truffert (Defender) vs Watkins (Forward)</a>
+        <a class="card" href="vs/truffert-vs-lacroix.html">Truffert (Defender) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/truffert-vs-matheus-n.html">Truffert (Defender) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/truffert-vs-bruno-g.html">Truffert (Defender) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/truffert-vs-jtimber.html">Truffert (Defender) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/truffert-vs-dewsbury-hall.html">Truffert (Defender) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/truffert-vs-van-hecke.html">Truffert (Defender) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/truffert-vs-mukiele.html">Truffert (Defender) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/truffert-vs-cunha.html">Truffert (Defender) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/truffert-vs-gravenberch.html">Truffert (Defender) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/truffert-vs-ele-fée.html">Truffert (Defender) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/truffert-vs-calvert-lewin.html">Truffert (Defender) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/szoboszlai-vs-saka.html">Szoboszlai (Midfielder) vs Saka (Midfielder)</a>
+        <a class="card" href="vs/szoboszlai-vs-enzo.html">Szoboszlai (Midfielder) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/szoboszlai-vs-garner.html">Szoboszlai (Midfielder) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/szoboszlai-vs-watkins.html">Szoboszlai (Midfielder) vs Watkins (Forward)</a>
+        <a class="card" href="vs/szoboszlai-vs-lacroix.html">Szoboszlai (Midfielder) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/szoboszlai-vs-matheus-n.html">Szoboszlai (Midfielder) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/szoboszlai-vs-bruno-g.html">Szoboszlai (Midfielder) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/szoboszlai-vs-jtimber.html">Szoboszlai (Midfielder) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/szoboszlai-vs-dewsbury-hall.html">Szoboszlai (Midfielder) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/szoboszlai-vs-van-hecke.html">Szoboszlai (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/szoboszlai-vs-mukiele.html">Szoboszlai (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/szoboszlai-vs-cunha.html">Szoboszlai (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/szoboszlai-vs-gravenberch.html">Szoboszlai (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/szoboszlai-vs-ele-fée.html">Szoboszlai (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/szoboszlai-vs-calvert-lewin.html">Szoboszlai (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/saka-vs-enzo.html">Saka (Midfielder) vs Enzo (Midfielder)</a>
+        <a class="card" href="vs/saka-vs-garner.html">Saka (Midfielder) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/saka-vs-watkins.html">Saka (Midfielder) vs Watkins (Forward)</a>
+        <a class="card" href="vs/saka-vs-lacroix.html">Saka (Midfielder) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/saka-vs-matheus-n.html">Saka (Midfielder) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/saka-vs-bruno-g.html">Saka (Midfielder) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/saka-vs-jtimber.html">Saka (Midfielder) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/saka-vs-dewsbury-hall.html">Saka (Midfielder) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/saka-vs-van-hecke.html">Saka (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/saka-vs-mukiele.html">Saka (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/saka-vs-cunha.html">Saka (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/saka-vs-gravenberch.html">Saka (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/saka-vs-ele-fée.html">Saka (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/saka-vs-calvert-lewin.html">Saka (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/enzo-vs-garner.html">Enzo (Midfielder) vs Garner (Midfielder)</a>
+        <a class="card" href="vs/enzo-vs-watkins.html">Enzo (Midfielder) vs Watkins (Forward)</a>
+        <a class="card" href="vs/enzo-vs-lacroix.html">Enzo (Midfielder) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/enzo-vs-matheus-n.html">Enzo (Midfielder) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/enzo-vs-bruno-g.html">Enzo (Midfielder) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/enzo-vs-jtimber.html">Enzo (Midfielder) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/enzo-vs-dewsbury-hall.html">Enzo (Midfielder) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/enzo-vs-van-hecke.html">Enzo (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/enzo-vs-mukiele.html">Enzo (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/enzo-vs-cunha.html">Enzo (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/enzo-vs-gravenberch.html">Enzo (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/enzo-vs-ele-fée.html">Enzo (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/enzo-vs-calvert-lewin.html">Enzo (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/garner-vs-watkins.html">Garner (Midfielder) vs Watkins (Forward)</a>
+        <a class="card" href="vs/garner-vs-lacroix.html">Garner (Midfielder) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/garner-vs-matheus-n.html">Garner (Midfielder) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/garner-vs-bruno-g.html">Garner (Midfielder) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/garner-vs-jtimber.html">Garner (Midfielder) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/garner-vs-dewsbury-hall.html">Garner (Midfielder) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/garner-vs-van-hecke.html">Garner (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/garner-vs-mukiele.html">Garner (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/garner-vs-cunha.html">Garner (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/garner-vs-gravenberch.html">Garner (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/garner-vs-ele-fée.html">Garner (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/garner-vs-calvert-lewin.html">Garner (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/watkins-vs-lacroix.html">Watkins (Forward) vs Lacroix (Defender)</a>
+        <a class="card" href="vs/watkins-vs-matheus-n.html">Watkins (Forward) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/watkins-vs-bruno-g.html">Watkins (Forward) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/watkins-vs-jtimber.html">Watkins (Forward) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/watkins-vs-dewsbury-hall.html">Watkins (Forward) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/watkins-vs-van-hecke.html">Watkins (Forward) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/watkins-vs-mukiele.html">Watkins (Forward) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/watkins-vs-cunha.html">Watkins (Forward) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/watkins-vs-gravenberch.html">Watkins (Forward) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/watkins-vs-ele-fée.html">Watkins (Forward) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/watkins-vs-calvert-lewin.html">Watkins (Forward) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/lacroix-vs-matheus-n.html">Lacroix (Defender) vs Matheus N. (Defender)</a>
+        <a class="card" href="vs/lacroix-vs-bruno-g.html">Lacroix (Defender) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/lacroix-vs-jtimber.html">Lacroix (Defender) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/lacroix-vs-dewsbury-hall.html">Lacroix (Defender) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/lacroix-vs-van-hecke.html">Lacroix (Defender) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/lacroix-vs-mukiele.html">Lacroix (Defender) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/lacroix-vs-cunha.html">Lacroix (Defender) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/lacroix-vs-gravenberch.html">Lacroix (Defender) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/lacroix-vs-ele-fée.html">Lacroix (Defender) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/lacroix-vs-calvert-lewin.html">Lacroix (Defender) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/matheus-n-vs-bruno-g.html">Matheus N. (Defender) vs Bruno G. (Midfielder)</a>
+        <a class="card" href="vs/matheus-n-vs-jtimber.html">Matheus N. (Defender) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/matheus-n-vs-dewsbury-hall.html">Matheus N. (Defender) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/matheus-n-vs-van-hecke.html">Matheus N. (Defender) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/matheus-n-vs-mukiele.html">Matheus N. (Defender) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/matheus-n-vs-cunha.html">Matheus N. (Defender) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/matheus-n-vs-gravenberch.html">Matheus N. (Defender) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/matheus-n-vs-ele-fée.html">Matheus N. (Defender) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/matheus-n-vs-calvert-lewin.html">Matheus N. (Defender) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/bruno-g-vs-jtimber.html">Bruno G. (Midfielder) vs J.Timber (Defender)</a>
+        <a class="card" href="vs/bruno-g-vs-dewsbury-hall.html">Bruno G. (Midfielder) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/bruno-g-vs-van-hecke.html">Bruno G. (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/bruno-g-vs-mukiele.html">Bruno G. (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/bruno-g-vs-cunha.html">Bruno G. (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/bruno-g-vs-gravenberch.html">Bruno G. (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/bruno-g-vs-ele-fée.html">Bruno G. (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/bruno-g-vs-calvert-lewin.html">Bruno G. (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/jtimber-vs-dewsbury-hall.html">J.Timber (Defender) vs Dewsbury-Hall (Midfielder)</a>
+        <a class="card" href="vs/jtimber-vs-van-hecke.html">J.Timber (Defender) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/jtimber-vs-mukiele.html">J.Timber (Defender) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/jtimber-vs-cunha.html">J.Timber (Defender) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/jtimber-vs-gravenberch.html">J.Timber (Defender) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/jtimber-vs-ele-fée.html">J.Timber (Defender) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/jtimber-vs-calvert-lewin.html">J.Timber (Defender) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/dewsbury-hall-vs-van-hecke.html">Dewsbury-Hall (Midfielder) vs Van Hecke (Defender)</a>
+        <a class="card" href="vs/dewsbury-hall-vs-mukiele.html">Dewsbury-Hall (Midfielder) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/dewsbury-hall-vs-cunha.html">Dewsbury-Hall (Midfielder) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/dewsbury-hall-vs-gravenberch.html">Dewsbury-Hall (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/dewsbury-hall-vs-ele-fée.html">Dewsbury-Hall (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/dewsbury-hall-vs-calvert-lewin.html">Dewsbury-Hall (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/van-hecke-vs-mukiele.html">Van Hecke (Defender) vs Mukiele (Defender)</a>
+        <a class="card" href="vs/van-hecke-vs-cunha.html">Van Hecke (Defender) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/van-hecke-vs-gravenberch.html">Van Hecke (Defender) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/van-hecke-vs-ele-fée.html">Van Hecke (Defender) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/van-hecke-vs-calvert-lewin.html">Van Hecke (Defender) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/mukiele-vs-cunha.html">Mukiele (Defender) vs Cunha (Midfielder)</a>
+        <a class="card" href="vs/mukiele-vs-gravenberch.html">Mukiele (Defender) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/mukiele-vs-ele-fée.html">Mukiele (Defender) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/mukiele-vs-calvert-lewin.html">Mukiele (Defender) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/cunha-vs-gravenberch.html">Cunha (Midfielder) vs Gravenberch (Midfielder)</a>
+        <a class="card" href="vs/cunha-vs-ele-fée.html">Cunha (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/cunha-vs-calvert-lewin.html">Cunha (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/gravenberch-vs-ele-fée.html">Gravenberch (Midfielder) vs E.Le Fée (Midfielder)</a>
+        <a class="card" href="vs/gravenberch-vs-calvert-lewin.html">Gravenberch (Midfielder) vs Calvert-Lewin (Forward)</a>
+        <a class="card" href="vs/ele-fée-vs-calvert-lewin.html">E.Le Fée (Midfielder) vs Calvert-Lewin (Forward)</a>
+    </div>
+    <div class="footer">Site compiled automatically on 2026-05-23 01:46:08 UTC via Live API Infrastructure.</div>
+</body>
+</html>
