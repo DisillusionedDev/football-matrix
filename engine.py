@@ -154,7 +154,7 @@ def clean_url_slug(name):
 # 4. MASTER COMPRESSION PIPELINE
 # ==========================================
 def execute_matrix_pipeline():
-    os.makedirs('public/vs', exist_ok=True)
+    os.makedirs('docs/vs', exist_ok=True)
     players_pool = fetch_live_fpl_pool()
     if not players_pool:
         print("Data ingestion empty. Execution pipeline suspended.")
@@ -167,7 +167,7 @@ def execute_matrix_pipeline():
         slug_a = clean_url_slug(player_a['name'])
         slug_b = clean_url_slug(player_b['name'])
         filename = f"{slug_a}-vs-{slug_b}.html"
-        filepath = os.path.join('public/vs', filename)
+        filepath = os.path.join('docs/vs', filename)
         
         stat_rows_html = ""
         # Setup which positions get which stats highlighted (2=Def, 3=Mid, 4=Fwd)
@@ -245,7 +245,7 @@ def build_central_index(links, timestamp):
 </body>
 </html>"""
 
-    with open('public/index.html', 'w', encoding='utf-8') as f:
+    with open('docs/index.html', 'w', encoding='utf-8') as f:
         f.write(index_html)
     print(f"Successfully generated main landing directory with {len(links)} long-tail nodes.")
 
@@ -271,7 +271,7 @@ def generate_sitemap(links, base_url):
         xml_content.append('  </url>')
     xml_content.append('</urlset>')
     
-    with open(os.path.join("public", "sitemap.xml"), "w", encoding="utf-8") as f:
+    with open(os.path.join("docs", "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write("\n".join(xml_content))
     print(f"✅ sitemap.xml successfully created with {len(links) + 1} indexed assets!")
 
